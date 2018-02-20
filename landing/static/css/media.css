@@ -1,0 +1,847 @@
+
+@media  screen and (max-width: 660px)
+{
+	
+	.events_modal_info
+	{
+		float:none;
+/*		clear: both;*/
+		width: 80%;
+/*		margin-left: auto;*/
+		margin: 10px auto;
+	}
+	.contact
+	{
+		width: 40%;
+		margin: 20px auto;
+		text-align: center;
+	}
+	
+	.close
+	{
+		position: relative;
+		top:-135% !important;
+/*		right: -10px !important;*/
+	}
+
+	.populary_course
+	{
+		display: none;
+	}
+	#go-top
+	{
+		width: 40px;
+		height: 40px;
+		border-radius: 20px;
+		opacity: 1;
+		z-index: 15555;
+	}
+	header
+	{
+		background: url(/image/mob_aut_back.png) no-repeat;
+		background-size: 100%;
+		height:85vh;
+	}
+
+	
+	.btn_a
+	{
+		white-space: normal !important;
+	}
+	.btn_a a
+	{
+		width: 50%;
+	}
+	nav 
+	{
+		display: none !important;
+	}
+	.item button:nth-child(2)
+	{
+		margin-left: 0px;
+		margin-top: 15px;
+	}
+	.flex-container-row
+	{
+		width: 100%;
+	}
+	
+	.content_footer
+	{
+		display: block;
+	}
+	.map 
+	{
+/*		display: none;*/
+	}
+	.text 
+	{
+		font-size: 12px;
+		font-family: "Roboto";
+		color: rgb(255, 255, 255);
+		width: 100%;
+	}
+	.Aligner-item--fixed
+	{
+		max-width: 100%;
+	}
+	.item:first-child
+	{
+		margin-top: -280px;
+	}
+	
+	.section-row
+	{
+
+	margin-top: -65px !important;
+	}
+	.why
+	{
+		box-shadow: none;
+		height: 150px;
+	}
+	.why img {
+		box-shadow: 0px 0px 0px 4px rgba(249,249,249,1);
+		padding: 15px;
+		margin: -15px auto;
+}
+	.why p
+	{
+		width: 100%;
+		margin: 30px auto;
+		
+	}
+	.why:nth-child(5),
+	.why:nth-child(6),
+	.why:nth-child(7),
+	{
+		margin: 0px auto;
+	}
+	.why:nth-child(7)
+	{
+	
+		margin-top: 25px;
+	}
+	.section-row .info-text
+	{
+		width: 100%;
+		margin: 0 0 10px;
+	}
+	.partners 
+	{
+		flex-direction: column;
+		text-align: center;
+/*		display: none;*/
+/*		position: relative;*/
+	}
+	.partners div
+	{
+		width: 40%;
+		margin: 5px auto;
+	}
+	
+	.author 
+	{
+		display: block;
+		
+	}
+	
+		.photo {
+		width: 60%;
+		height: 300px;
+		margin: -25px auto;
+		background: url(../image/back_photo_mob.png) no-repeat;
+		background-size: contain;
+}
+	
+	.photo span:first-child {
+		display: block;
+		position: relative;
+		top: -13px;
+		font-size: 40px !important;
+
+}
+	
+
+	.aut_one , .aut_two , .aut_three
+	{
+		background: url(../image/mob_aut_back.png) no-repeat;
+		background-size: cover;
+		height: auto;
+		position: relative;
+		padding-bottom: 15px;
+		margin-top: 50px !important;
+	}
+	#about-us
+	{
+		margin-top: -20px;
+	}
+	.about_course
+	{
+		width: 90%;
+		height: auto;
+		margin: 50px auto !important;
+	}
+	.photo span.position
+	{
+		margin-left: 100px !important;
+	}
+	.btn_course
+	{
+		position: absolute;
+		top: -5px;
+		right: 15px;
+		width: 100%;
+	}
+	.event
+	{
+		width: 90% !important;
+/*		height: 100px;*/
+		padding: 10px 10px 45px 10px;
+		position: relative;
+	}
+	.event span:first-child 
+	{
+		display: block;
+		margin-left: 0px !important;
+		margin-bottom: -15px;
+	}
+	span.date
+	{
+		position: absolute;
+		top: 70px;
+		left:9px;
+	}
+	.event button
+	{
+		position: absolute;
+		top: 60px;
+		right: 9px;
+	}
+	
+	.for_students
+	{
+		display: block;
+		position: relative;
+		margin-top: 0;
+		min-height: 550px;
+	}
+	#first_block_stud 
+	{
+		position: absolute;
+		z-index: 5;
+		width: 80%;
+		background: white;
+		margin-left: -40%;
+		left: 46%;
+		top:100px;
+		padding: 15px;
+		height: auto;
+	}
+	.img_for_students
+	{
+		position: absolute;
+		top: 0;
+		left: auto;
+		right:auto;
+		
+	}
+	.for_students > div
+	{
+		width: 100%;
+		margin: 0 auto;
+		border:none;
+	}
+	.partners div
+	{
+		text-align: center;
+	}
+	footer 
+	{
+		padding-top: 15px;
+/*		position: absolute;*/
+/*		bottom: auto;*/
+		
+/*		top: 450px;*/
+	}
+	.for_students p
+	{
+		width: 100%;
+	}
+	.form-events h3
+	{
+		margin-bottom: 40px;
+	}
+}
+
+
+
+@media screen and (max-width: 1024px)
+{
+	header
+	{
+		background: url(../image/tablet_header.png) no-repeat;
+		background-size: 100%;
+	}
+	.nav
+	{
+		width: 100%;
+	}
+		.content_footer
+	
+	{
+		flex-wrap:wrap ;
+	}
+	.populary_course
+	{
+		margin-top:56px !important;
+		margin-left: 75px;
+	}
+	
+	.contact a 
+	{
+		display: none;
+	}
+	iframe 
+	{
+		width: 100%;
+	}
+}
+
+
+@media screen and (max-width: 768px)
+{
+	.for_students
+	{
+		display: block;
+		position: relative;
+		margin-top: 0;
+		min-height: 550px;
+	}
+	#first_block_stud 
+	{
+		position: absolute;
+		z-index: 5;
+		width: 80%;
+		background: white;
+		margin-left: -40%;
+		left: 46%;
+		top:100px;
+		padding: 15px;
+		height: auto;
+	}
+	.img_for_students
+	{
+		position: absolute;
+		top: 0;
+		left: auto;
+		right:auto;
+		
+	}
+	.for_students > div
+	{
+		width: 100%;
+		margin: 0 auto;
+		border:none;
+	}
+	.partners div
+	{
+		text-align: center;
+	}
+	footer 
+	{
+/*		position: absolute;*/
+/*		bottom: auto;*/
+		
+/*		top: 450px;*/
+	}
+	.for_students p
+	{
+		width: 100%;
+	}
+	
+	
+	.why:first-child
+	{
+		margin-left: 20px;
+	}
+	.why 
+	{
+		border: none;
+		width: 20%;
+		margin-left: 20px;
+		margin-top: 10px;
+		font-size: 18px;
+		font-family: "Roboto";
+		
+	}
+	.why p
+	{
+		font-size: 13px;
+	}
+	.why:nth-child(5)
+	{
+		margin-left: 90px;
+	}
+	.author
+	{
+		width: 100%;
+	}
+	.event
+	{
+		width: 100%;
+		font-size: 16px;
+		font-family: "Roboto";
+		color: rgb(99, 70, 121);
+	}
+	.event span:first-child
+	{
+		margin-left: 10px;
+	}
+	span.date 
+	{
+		padding-right: 10px;
+	}
+	.partners div
+	{
+		padding: 5px 40px;
+	}
+	.content_footer
+	
+	{
+		flex-wrap:wrap ;
+	}
+	.populary_course
+	{
+		margin-top:56px !important;
+		margin-left: 75px;
+	}
+	
+	.contact a 
+	{
+		display: none;
+	}
+
+	.modal-dialog
+	{
+		width: 80% !important;
+		margin: 30px auto !important;
+	}
+	.events_popup
+	{
+		flex-direction: column;
+	}
+	.info-events
+	{
+		width: 100%;
+	}
+	.close_tablet
+	{
+		position: absolute;
+		top:-85%;
+		right: 2%;
+	}
+	.form-events
+	{
+		border: none;
+	}
+	.form-events h3 
+	{
+		margin-top: 0;
+	}
+	.form 
+	{
+		margin-top: -20px;
+	} 
+	
+	.nav
+	{
+		display: none;
+	}
+}
+
+
+
+
+
+
+
+
+@media screen and (max-width: 1141px)
+{
+	.btn_course button 
+	{
+		width: 28px;
+		height: 28px;
+	}
+}
+
+
+
+@media screen and (max-width: 1264px)
+{
+	.btn_course p {
+    font-size: 10px;
+   
+}
+}
+
+@media screen and (max-width: 1153px)
+{
+	.btn_course p {
+		font-size: 9px;
+
+	}
+}
+@media screen and (max-width: 1024px)
+{
+	.about_course button {
+    margin-top: 12px;
+}
+	
+	.event
+	{
+		font-size: 14px;
+	}
+	.why p
+	{
+		font-size: 12px;
+	}
+	
+}
+
+
+@media screen and (max-width: 1269px)
+{
+	.photo span.position 
+{
+		margin-left: 0px; 
+}
+	.photo span:first-child 
+{
+		font-size: 33px;
+		font-family: "Roboto";
+}
+	.photo img
+{
+		width: 200px;
+		height: 200px;
+}
+
+	
+}
+
+@media screen and (max-width: 1003px)
+{
+	
+	.populary_course {
+    margin-top: -133px;
+    width: 25%;
+}
+	.form-group input, .form-group select
+	{
+		width: 300px;
+	}
+	.form-group p
+	{
+		width: 300px;
+	}
+}
+
+
+@media screen  and (min-width: 481px) and (max-width: 767px) 
+{
+  	.contact
+	{
+		width: 40%;
+		margin: 20px auto;
+		text-align: center;
+	}
+
+	.populary_course
+	{
+		display: none;
+	}
+  	
+	#go-top
+	{
+		width: 40px;
+		height: 40px;
+		border-radius: 20px;
+		opacity: 1;
+		z-index: 15555;
+	}
+}
+
+@media screen and (max-width: 983px)
+{
+	.event button
+	{
+		width: 90px;
+	}
+	.event span:first-child
+	{
+		margin-left: 5px;
+	}
+	.event
+	{
+		width: 100%;
+	}
+	.partners div {
+  
+  
+    padding: 4px 40px;
+    font-size: 20px;
+
+}
+	
+}
+
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+	.populary_course
+	{
+		display: none;
+	}
+	#go-top
+	{
+		width: 40px;
+		height: 40px;
+		border-radius: 20px;
+		opacity: 1;
+		z-index: 15555;
+	}
+/* Styles */
+	.for_students
+	{
+		display: block;
+		position: relative;
+		margin-top: 0;
+		min-height: 550px;
+	}
+	#first_block_stud 
+	{
+		position: absolute;
+		z-index: 5;
+		width: 80%;
+		background: white;
+		margin-left: -40%;
+		left: 48%;
+		top:100px;
+		padding: 15px;
+		height: auto;
+	}
+	.img_for_students
+	{
+		position: absolute;
+		top: 0;
+		left: auto;
+		right:auto;
+		
+	}
+	.for_students > div
+	{
+		width: 100%;
+		margin: 0 auto;
+		border:none;
+	}
+	.partners div
+	{
+		text-align: center;
+	}
+	footer 
+	{
+/*		position: absolute;*/
+/*		bottom: auto;*/
+		
+/*		top: 450px;*/
+	}
+	.for_students p
+	{
+		width: 100%;
+	}
+		.modal-dialog
+	{
+		margin: auto !important;
+	}
+
+	.Aligner-item--fixed
+	{
+		max-width: 90%;
+	}
+	.item:first-child
+	{
+		margin-top: -36%;
+	}
+	.event
+	{
+		width: 90% !important;
+/*		height: 100px;*/
+		padding: 10px 10px 45px 10px;
+		position: relative;
+	}
+	.event span:first-child 
+	{
+		display: block;
+		margin-left: 0px !important;
+		margin-bottom: -15px;
+	}
+	span.date
+	{
+		position: absolute;
+		top: 70px;
+		left:9px;
+	}
+	.event button
+	{
+	position: absolute;
+		top: 60px;
+		right: 9px;
+	}
+
+}
+
+
+@media screen and (max-width: 440px)
+{
+	#about-us
+	{
+	margin-top: -150px;
+	}
+	.for_students
+	{
+		min-height: 600px;
+	}
+	
+}
+
+
+
+@media screen and (max-width: 400px)
+{
+	.why
+	{
+		margin-left: 10% !important;
+		margin-top: 35px;
+	}
+	.why img
+	{
+		width: 80%;
+	}
+	.why:nth-child(7)
+	{
+	margin: 35px auto !important;
+
+	}
+	.why:nth-child(5)
+	{
+/*		margin-left: 0;*/
+	}
+	.for_students
+	{
+		min-height: 630px;
+	}
+	.form-group input, 
+	.form-group select , 
+	.form-group p
+	{
+		width: 220px;
+	}
+	.close
+	{
+/*		position: relative;*/
+		top:-146% !important;
+/*		right: -10px !important;*/
+	}
+	
+}
+
+@media screen and (max-width: 320px)
+{
+.item:first-child {
+    margin-top: -265px;
+	}	
+	header
+	{
+/*		height: 100vh;*/
+	}
+	.photo span:first-child
+	{
+		font-size: 32px !important;
+	}
+	.photo
+	{
+		margin: -12px auto;
+	}
+	.schedule_pdf , .want_learn
+	{
+		font-size: 13px !important;
+	}
+	
+	.event
+	{
+		font-size: 12px;
+	}
+	.for_students
+	{
+		min-height: 620px;
+	}
+	.close
+	{
+		top: -180% !important ;
+	}
+}
+
+@media screen and (max-width: 375px)
+{
+	.item:first-child {
+    margin-top: -85%;
+	}	
+	
+}
+
+@media screen and (max-width: 480px)
+{
+	.contact
+	{
+		width: 50%;
+	}
+}
+
+@media screen and (max-width: 380px)
+{
+	.contact
+	{
+		width: 60%;
+	}
+}
+
+
+@media screen and (max-width: 600px)
+{
+	.events_modal_info
+	{
+		float:none;
+/*		clear: both;*/
+		width: 80%;
+/*		margin-left: auto;*/
+		margin: 10px auto;
+	}
+}
+
+@media screen and (max-width: 550px)
+{
+	.close
+	{
+		top: -155% !important;
+	}
+}
+
+
+@media screen and (max-width: 450px)
+{
+	.close
+	{
+		top: -170% !important;
+	}
+}

@@ -1,0 +1,60 @@
+<div class="modal fade" id="want_learn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    
+      <div class="modal-header">
+       
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h1>{{config_form.header}}</h1>
+      </div>
+      <div class="modal-body">
+      
+       <form  name = 'contact_form' action="." method = "post">{% csrf_token %}
+       <div class="form">
+      {% if form.errors %}
+	<!-- Error messaging -->
+	<div id="errors">
+		<div class="inner">
+			<p>There were some errors in the information you entered. Please correct the following:</p>
+			{{ form.non_field_errors }}
+			<ul>
+				{% for field in form %}
+					{% if field.errors %}<li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+	<!-- /Error messaging -->
+{% endif %}
+       {% for elem in form %}
+       	<div class="form-group">
+       		<label for="">{{elem.label}}</label>
+       		<div class="">{{elem}}</div>
+       	</div>
+       	{% endfor %}
+      
+       	<div class="form-group">
+       		<p>{{config_form.text}}</p>
+       	</div>
+       	<div class="form-group">
+       		<button>{{config_form.button}}</button>
+       	</div>
+       	
+       </div>
+       	
+       </form>
+      </div>
+     
+    </div>
+  </div>
+</div>
+
+
+<script>
+$(document).ready(function(){
+	 $("#id_contact_phone").mask("+380(99) 999-99-99");
+});
+</script>

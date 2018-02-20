@@ -1,0 +1,359 @@
+{% load staticfiles %}
+{% load solo_tags %}
+{% load poll_extras %}
+{% get_solo 'landing.Header' as header_config %}
+{% get_solo 'landing.SiteConfiguration' as site_config %}
+{% get_solo 'landing.TextWhyWe' as text_why_we %}
+{% get_solo 'popup.ConfigContactForm' as config_form %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{site_config.site_name}}</title>
+	<link rel="icon" type="image/x-icon" href="{{MEDIA_URL}}{{site_config.icon}}" />
+	<link rel="stylesheet" href="{% static  'css/style.css' %}">
+	<!-- <link rel="stylesheet" href="{% static  'css/media.css' %}"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="{% static 'js/script.js' %}"></script>
+	<script src="{% static 'js/jquery.maskedinput.js' %}"></script>
+	<script src="{% static 'js/jquery.maskedinput.min.js' %}"></script>
+	<script src="{% static 'js/ajax_form.js' %}"></script>
+{% if result %}
+<script>
+$(document).ready(function(){
+		$('#thanks').css('display' , 'block');
+		$('#close_btn_thanks').click(function(){
+		$('#thanks').css('display' , 'none');
+				
+		})
+	})
+</script>
+{% endif %}
+
+
+
+<style>
+	.style-none button:nth-child(2)
+	{
+		display: none;
+	}
+	.none-seats
+	{
+		display: none !important;
+	}
+</style>
+</head>
+<body>
+
+<div class="" id="thanks" style = 'display: none;'>
+  <div class="" role="document">
+
+        <button id = 'close_btn_thanks' type="button" class="close" data-dismiss="modal" aria-label="Close">X
+        </button>
+        <p>Спасибо!</p>
+  
+  </div>
+</div>
+
+	<header class = 'flex-container' style = 'background: url({{ MEDIA_URL }}{{header_config.image}}) no-repeat; background-size: cover;'>
+	<div class="aligner">
+		<div class="Aligner-item--fixed ">
+			<div class="item title">
+				<h1>Team <span>Factory</span></h1>
+			</div>
+			<div class="item text">
+
+				{{header_config.header_text}}
+			</div>
+			<div class="item btn_a">
+				<a type="button" data-toggle="modal"  data-target="#want_learn">{{header_config.btn_learn}}</a>
+				<a href  = '{{header_config.link_presentation}}' target="_blank">{{header_config.btn_presentation}}</a>
+			</div>
+			
+		</div>
+	</div>
+	<nav class="item nav">
+			
+				<a href="#about-us">О нас</a>
+				<a href="#courses">Курсы</a>
+				<a href="#events">Ивенты</a>
+				<a href="#students">Студентам</a>
+				<a href="#contacts">Контакты</a>
+			</nav>
+	</header>
+	
+	<div id = 'about-us' class="flex-container-row">
+		<h2>Почему мы?</h2>
+	</div>
+	
+	<section  class = 'flex-container-row section-row'>
+
+	{% for elem in why_we %}
+		<div class="why">
+		<img src="{{MEDIA_URL}}{{elem.image}}" alt="">
+			<p>{{elem.text}}</p>
+		</div>
+		{% endfor%}
+
+		<p class = 'info-text'>{{text_why_we.text}}</p>
+	</section>
+	
+	<section id = 'courses' class = 'content'>
+	<h2>Курсы</h2>
+	{% for course in courses_all %}
+		<div class="author" style = 'background: url({{MEDIA_URL}}{{course.background}}) no-repeat;background-size: cover;'>
+			<div class = 'photo' style  = 'background: url({% static "image/decor.png" %});'>
+				<span>{{course.name_en}}</span>
+				
+				<img src="{{MEDIA_URL}}{{course.author.image}}" alt="">
+				<span class = 'name'>{{course.author.name}} {{course.author.surname}}</span>
+				<span class = 'position'>{{course.author.position}}</span>
+			</div>
+			<div class = 'about_course'>
+				<p>Курс: <span class = 'name_course'>{{course.name_ru}}</span></p>
+				<p>Преподaватель: <span>{{course.author.name}} {{course.author.surname}}</span></p>
+				<p>Длительность курса: <span>{{course.duration}}</span> ({{course.start_course|date:"SHORT_DATE_FORMAT"}} - {{course.end_course|date:"SHORT_DATE_FORMAT"}})</p>
+				<p class="text_course">
+					{{course.description}}
+				</p>
+				<a href = '{{course.upload.url}}' target = '_blank' class = 'schedule_pdf'>{{course.shedule_btn_text}}</a>
+	
+<!--				<button id = 'id' class = 'want_learn'>Хочу учиться</button>-->
+		<a type="button" class="want_learn {{course.number_of_seats|first_digit}}" data-toggle="modal" data-target="#learn_modal">
+  {{course.learn_btn_text}}
+		</a>
+			</div>
+			<!-- <div class="btn_course">
+				<span>Lorem ipsum.</span>
+			</div> -->
+			<div class = 'btn_course {{course.number_of_seats|first_digit}}  {{course.number_of_seats|last_digit}}'>
+				<button>{{course.number_of_seats|first_digit}}</button>
+				<button>{{course.number_of_seats|last_digit}}</button>
+				<p>мест осталось</p>
+			</div>
+		</div>
+		{% endfor %}
+	</section>
+	
+	<section id = 'events' class = 'events content'>
+		
+		<h2>ИВЕНТЫ</h2>
+		<div class="event">
+			<span>О брутализме в современном веб-дизайне </span> (<span class = 'event_author'>Влад Антонов</span> , <span>арт-директор</span>)
+			
+
+			<button type="button" data-toggle="modal" data-target="#events_modal" > (Pop-up)Детали</button>
+			<span class="date">11.02.2018</span>
+		</div>
+		<div class="event">
+			<span>О брутализме в современном веб-дизайне </span> (<span class = 'event_author'>Влад Антонов</span> , <span>арт-директор</span>)
+			<button >Детали</button>
+			<span class="date">11.02.2018</span>
+		</div>
+		<div class="event">
+			<span>О брутализме в современном веб-дизайне </span> (<span class = 'event_author'>Влад Антонов</span> , <span>арт-директор</span>)
+			<button >Детали</button>
+			<span class="date">11.02.2018</span>
+		</div>
+		<div class="event">
+			<span>О брутализме в современном веб-дизайне </span> (<span class = 'event_author'>Влад Антонов</span> , <span>арт-директор</span>)
+			<button >Детали</button>
+			<span class="date">11.02.2018</span>
+		</div>
+		<div class="many_event content events">
+			<div class="event">
+				<span>О брутализме в современном веб-дизайне </span> (<span class = 'event_author'>Влад Антонов</span> , <span>арт-директор</span>)
+				<button >Детали</button>
+				<span class="date">11.02.2018</span>
+				
+			</div>
+			<div class="event">
+				<span>О брутализме в современном веб-дизайне </span> (<span class = 'event_author'>Влад Антонов</span> , <span>арт-директор</span>)
+				<button >Детали</button>
+				<span class="date">11.02.2018</span>
+				
+			</div>
+			<div class="event">
+				<span>О брутализме в современном веб-дизайне </span> (<span class = 'event_author'>Влад Антонов</span> , <span>арт-директор</span>)
+				<button >Детали</button>
+				<span class="date">11.02.2018</span>
+				
+			</div>
+			<div class="event">
+				<span>О брутализме в современном веб-дизайне </span> (<span class = 'event_author'>Влад Антонов</span> , <span>арт-директор</span>)
+				<button >Детали</button>
+				<span class="date">11.02.2018</span>
+				
+			</div>
+		</div>
+		<button id = 'others'>eще <img id = 'arrow' src="image/arrow-down.png" alt=""></button>
+		
+	</section>
+	
+	<section id ='students' class = 'for_students'>
+
+		<div id = 'first_block_stud'>
+			<div class="line_up"></div>
+			<div class="line_down"></div>
+			<h3>Студентам</h3>
+			
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum consequuntur repellendus in maxime iusto et aut ullam cum neque culpa, inventore officiis, odio nesciunt accusantium optio! Enim iste porro numquam aliquam a placeat cum molestias architecto facere autem voluptate quaerat aliquid incidunt, dolorem. Perferendis voluptas ratione corporis quia adipisci dolore!</p>
+			
+		</div>
+		<div class = 'img_for_students'>
+<!--			<img src="image/photo_for_students.png" alt="">-->
+		</div>
+	</section>
+	
+	<section class = 'partners'>
+		<a href=""><div>logotype</div></a>
+		<a href=""><div>logotype</div></a>
+		<a href=""><div>logotype</div></a>
+	</section>
+	
+	<div class="partners" style = 'margin-top: 25px'>
+		
+		<span>Lorem</span>
+	</div>
+	
+	<footer>
+	<div id= 'contacts' class="content_footer">
+		<div class = 'contact'>
+			<span>Контакты</span>
+			<p id = 'geolocation'>Lorem ipsum dolor</p>
+			<p id = 'post'>Lorem ipsum dolor</p>
+			<p id = 'phone'>Lorem ipsum dolor</p>
+			<p id = 'phone'>Lorem ipsum dolor</p>
+			<a class = 'circle google'></a>
+			<a class = 'circle vk'></a>
+			<a class = 'circle skype'></a>
+		</div>
+		<div class = 'populary_course'>
+			<span>Популярные курсы</span>
+			<ul>
+				<li>Lorem ipsum.</li>
+				<li>Lorem ipsum.</li>
+				<li>Lorem ipsum.</li>
+				<li>Lorem ipsum.</li>
+			</ul>
+		</div>
+		
+		<div class = 'map'><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2541.5692726703796!2d30.473564189920655!3d50.43049627796523!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cec08021053f%3A0xc4ea1fab18506bd0!2zM0EsINGD0LsuINCh0L7Qu9C-0LzQtdC90YHQutCw0Y8sIDPQkCwg0JrQuNC10LIsIDAyMDAw!5e0!3m2!1sru!2sua!4v1518176123746"  frameborder="0" style="border:0" allowfullscreen></iframe>.</div>
+	</div>
+	</footer>
+	<div class="copy">
+		
+		<span>&copy; All rights reserved.</span>
+	</div>
+	
+	
+	<div id="want_learn_modal">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam, earum.
+	</div>
+	
+	
+
+
+
+
+{% include 'formcontact.html' %}
+
+{% include 'registration_course.html' %}
+
+
+
+<div class="modal fade" id="events_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog popup " role="document">
+   
+    <div class="modal-content events_popup">
+     
+    <div class="info-events">
+   	    
+    	   <div class="modal-header title_pop">
+       
+       
+        <h1>Lorem ipsum dolor sit amet, consectetur.
+        </h1>
+        <span>Lorem ipsum.</span>
+        <span>Lorem ipsum.</span>
+      </div>
+      <div class = 'class'>
+		  <div class=" events_modal_info">
+				<span>Lorem</span>
+				<span>Lorem ipsum dolor.</span>
+		  </div>
+		  <div class=" events_modal_info">
+				<span>Lorem</span>
+				<span>Lorem ipsum dolor.</span>
+		  </div>
+    	 <div class=" events_modal_info">
+				<span>Lorem</span>
+				<span>Lorem ipsum dolor.</span>
+		  </div>
+		  <p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet neque culpa odio aliquam et perferendis, reprehenderit officiis quo modi harum obcaecati sequi earum inventore tempore voluptatum enim! Mollitia amet labore adipisci, ab excepturi laudantium, autem perferendis blanditiis odit magnam ea, aperiam at temporibus consectetur. Incidunt eos, repellendus distinctio minus corporis!
+      	  </p>
+      </div>
+    </div>
+   
+      <div class="form-events">
+     
+      	<div class="modal-body border">
+      	<button type="button" class="close close_tablet" data-dismiss="modal" aria-label="Close">
+           
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h3>Lorem ipsum.</h3>
+<form action="">
+       <div class="form">
+       
+       	<div class="form-group">
+       		<label for="">Lorem ipsum.</label>
+       		<input type="text" placeholder = 'Lorem ipsum.'>
+       	</div>
+       		<div class="form-group">
+       		<label for="">Lorem ipsum.</label>
+       		<input type="text" placeholder = 'Lorem ipsum.'>
+       	</div>
+       	
+     
+       	<div class="form-group">
+       		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eaque labore rem, delectus recusandae necessitatibus reprehenderit blanditiis architecto ab, quaerat?</p>
+       	</div>
+       	<div class="form-group">
+       		<button>Перезвоните мне</button>
+       	</div>
+       	
+       </div>
+       	
+       </form>
+      </div>
+      </div>
+      
+     
+    </div>
+  </div>
+</div>
+
+
+<script>
+$(document).ready(function(){
+	 $("#id_phone").mask("+380(99) 999-99-99");
+});
+</script>	
+	
+	
+
+</body>
+</html>
