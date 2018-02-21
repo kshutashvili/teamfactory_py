@@ -333,6 +333,7 @@ button
 
 .author
 {
+	position: relative;
 	height: 420px;
 	width: 80%;
 	margin: 5px;
@@ -2088,10 +2089,15 @@ a:hover
 	{
 		float:none;
 /*		clear: both;*/
-		width: 80%;
+		width: 80%;s
 /*		margin-left: auto;*/
 		margin: 10px auto;
 	}
+	.btn_course_none span 
+	{
+		right: 20px;
+	}
+
 }
 
 @media screen and (max-width: 550px)
@@ -2128,17 +2134,127 @@ a:hover
 #thanks
 {
 	position: absolute;
-	top: 15px;
-	left: 30%;
-	width: 150px;
+	z-index: 155555;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	 justify-content: center;
+	top: 35%;
+	left: 50%;
+	margin-left: -250px;
+	width: 500px;
 	height: 150px;
 	background-color: white;
+	border-top: 6px solid #574581;
+	border-right: 2px solid  #574581;
+	border-left: 2px solid  #574581;
+	border-bottom: 2px solid  #574581;
+	text-align: center;
+    font-size: 16px;
+    font-family: "Roboto";
+    color: rgb(91, 91, 91);
+    line-height: 1.2;
 }
 
 
-#close_btn_thanks
+#thanks_register
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	width: 500px;
+	background: white;
+	height: 300px;
+	z-index: 150;
+	margin-left: -250px;
+	left: 50%;
+	top:100px;
+	border-top: 6px solid #574581;
+	border-right: 2px solid  #574581;
+	border-left: 2px solid  #574581;
+	border-bottom: 2px solid  #574581;
+	text-align: center;
+	font-size: 16px;
+	font-family: "Roboto";
+	color: rgb(91, 91, 91);
+	line-height: 1.2;
+}
+
+#close_btn_thanks,
+#error_close,
+#close_btn_thanks_registration
 {
 	position: absolute;
-	top:0;
-	right: 0;
+	top: 5px;
+	right: 5px;
+	font-size: 16px !important;
+	background: none;
+	border: none;
+	color: #574581 ;
+	font-family: "Roboto";
+}
+
+
+
+.btn_course_none span 
+{
+	position: absolute;
+	right: 35px;
+	top: 0;
+	display: block;
+	width: auto;
+	margin-left: 5px;
+	align-self: flex-start;
+	background: none;
+	text-align: right;
+	padding: 5px 10px;
+	border-radius: 5px;
+    background-color: red;
+    font-size: 12px;
+    font-family: 'Roboto';
+    color: white;
+    margin-top: -10px;
+    text-align: center;
+}
+
+.zero-number
+{
+	display: block !important;
+}
+
+
+#error
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border-top: 6px solid #574581;
+	border-right: 2px solid  #574581;
+	border-left: 2px solid  #574581;
+	border-bottom: 2px solid  #574581;
+	text-align: center;
+	font-size: 16px;
+	font-family: "Roboto";
+	color: rgb(91, 91, 91);
+	line-height: 1.2;
+	position: fixed;
+	z-index: 56556;
+	width: 500px;
+	height: 250px;
+	margin-left: -250px;
+	left:50%;
+	top: 25%;
+	background: white;
+}
+
+#error_mail
+{
+	text-align: center;
+    font-size: 16px;
+    font-family: "Roboto";
+    color: #574581;
+    line-height: 1.2;
 }

@@ -1,6 +1,7 @@
 from django.db import models
 from solo.models import SingletonModel
 from courses.models import Course
+from django.core.validators import validate_email
 # Create your models here.
 
 
@@ -24,7 +25,7 @@ class ConfigRegistrationForm(SingletonModel):
 
 class Contact(models.Model):
 	name  = models.CharField(max_length=200 , verbose_name="Введите ваше имя" ,  blank= True)
-	mail  = models.EmailField(max_length=254 , verbose_name="Введите вашу почту" , blank= True)
+	mail  = models.EmailField(max_length=254 , verbose_name="Введите вашу почту" , blank= True , validators=[validate_email])
 	contact_phone = models.CharField(max_length=35 , verbose_name="Введите ваш телефон" , blank= True)
 	course = models.ForeignKey(Course , on_delete=models.CASCADE , verbose_name='Курс который хотите посетить')
 
@@ -44,3 +45,23 @@ class RegisterCourse(models.Model):
 	class Meta:
 		verbose_name = 'Регистрация на курсе'
 		verbose_name_plural = 'Регистрации на курс'
+
+
+class PopUpThanksConsulting(SingletonModel):
+	text = models.TextField(max_length=1000 , verbose_name='Текст "Окно после заказа консультации"')
+
+	class Meta:
+		verbose_name = 'Текст "Окно после заказа консультации"'
+	
+
+class PopUpThanksRegister(SingletonModel):
+	text = models.TextField(max_length=1000 , verbose_name='Текст "Окно после регистрации"')
+
+	class Meta:
+		verbose_name = 'Текст "Окно после заказа регистрации"'	
+
+class PopUpErrorRegister(SingletonModel):
+	text = models.TextField(max_length=1000 , verbose_name='Текст "Ошибка при регистрации"')
+
+	class Meta:
+		verbose_name = 'Текст "Ошибка при регистрации"'	

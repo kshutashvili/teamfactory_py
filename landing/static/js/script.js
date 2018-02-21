@@ -66,15 +66,6 @@ $(document).ready(function(){
 	})
 })
 
-
-// function windowSize(){
-//     if ($(window).width() <= '660'){
-//     	alert('asdasdasd');
-//         $('header').css('background' , 'url(static/image/mobile_header.png)');
-//     } 
-// }
-
-
 function back_photo()
 {
 	if($(window).width() <= 1024)
@@ -96,20 +87,25 @@ function back_photo()
 			$(this).css('background-size' , 'contain');
 			$(this).css('background-repeat' , 'no-repeat');
 		});
-		// var all_authors = $('.author');
-		// for(var i = 0; i < all_authors.length; i++)
-		// {
-		// 	$(this).css('background' , 'url(/static/image/mob_aut_back.png)');
-		// }
+		
 	}
 }
-// $(window).resize(function(){
-// 	// alert($( window ).width());
-	
-// })
 
-
-// $(document).load(windowSize); // при загрузке
-// $(document).resize(windowSize); // при изменении размеров
-// // или "два-в-одном", вместо двух последних строк:
 $(window).on('load resize', back_photo);
+
+
+$(document).ready(function(){
+	
+
+	$('#id_mail').blur(function(){
+		var mail = $(this).val();
+		var filter = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$/;
+	    if(filter.test(mail)){
+	      $('#error_mail').css('display' , 'none');
+	    }
+	    else{
+	    	$('#error_mail').css('display' , 'block');
+	        
+	    }
+	})
+})

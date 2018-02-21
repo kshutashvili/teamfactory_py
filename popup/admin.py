@@ -1,10 +1,12 @@
 from django.contrib import admin
 from solo.admin import SingletonModelAdmin
-from .models import ConfigContactForm , Contact , ConfigRegistrationForm , RegisterCourse
+from .models import ConfigContactForm , Contact , ConfigRegistrationForm , RegisterCourse, PopUpThanksConsulting, PopUpThanksRegister, PopUpErrorRegister
 # Register your models here.
 admin.site.register(ConfigContactForm, SingletonModelAdmin)
 admin.site.register(ConfigRegistrationForm, SingletonModelAdmin)
-
+admin.site.register(PopUpThanksConsulting, SingletonModelAdmin)
+admin.site.register(PopUpThanksRegister, SingletonModelAdmin)
+admin.site.register(PopUpErrorRegister , SingletonModelAdmin)
 
 class ContactFormAdmin(admin.ModelAdmin):
 	list_display  = [field.name  for field in Contact._meta.fields]
@@ -21,3 +23,4 @@ class RegisterCourseAdmin(admin.ModelAdmin):
 
 admin.site.register(Contact , ContactFormAdmin)
 admin.site.register(RegisterCourse , RegisterCourseAdmin)
+

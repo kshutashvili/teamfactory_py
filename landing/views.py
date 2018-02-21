@@ -13,8 +13,6 @@ import json
 
 class MainView(TemplateView):
 
-	
-
 	def get_ctx(self):
 		form  = ContactForm()
 		form_course  = RegisterCourseForm()
@@ -56,8 +54,7 @@ class MainView(TemplateView):
 			return render(request , 'main.html' , ctx)
 		else:
 			form = ContactForm()
-
-		return HttpResponse('Error')
+		return HttpResponse('asdasd')
 
 
 class RegistrationCourse(TemplateView):
@@ -75,33 +72,27 @@ class RegistrationCourse(TemplateView):
 											 phone=phone, 
 											 course=Course.objects.get(id=course_id)
 											 )
-			old_number_seats = Course.objects.get(id=course_id).number_of_seats
-			new_number_seats  = old_number_seats  - 1
+			try:
+
+				old_number_seats = Course.objects.get(id=course_id).number_of_seats
+				new_number_seats  = old_number_seats  - 1
+			except:
+				context = {
+				'test': 'test',
+				'course_id': course_id
+			}
 			Course.objects.filter(id=course_id).update(number_of_seats=new_number_seats)
 			message = 'Имя клиента -  '  + name + " ,"
 			message += "Телефон -" + phone +  " ,"
 			message += "Курс -" + Course.objects.get(id=course_id).name_ru
+			context = {
+				'new_number_seats': new_number_seats ,
+				'course_id': course_id
+			}
 			try:
 				send_mail("Запись на курс ", message, settings.EMAIL_HOST_USER ,  [settings.EMAIL_HOST_USER])
 				
 			except BadHeaderError:
 				return HttpResponse('Invalid header found.')
 
-			return HttpResponse(json.dumps({'new_number_seats': new_number_seats}))
-
-# def test(request):
-# 	form  = ContactForm()
-# 	all_obj = Test.objects.all()
-# 	why_we  = WhyWe.objects.all()
-# 	authors_all = Author.objects.all()
-# 	courses_all = Course.objects.all()
-# 	print(authors_all)
-# 	for elem in form:
-# 		print(elem.field)
-# 		print(elem.label)
-# 	context = {
-# 		'why_we': why_we,
-# 		'courses_all': courses_all,
-# 		'form': form,
-# 	}
-# 	return render(request , 'main.html' , context)
+			return HttpResponse(json.dumps(context))

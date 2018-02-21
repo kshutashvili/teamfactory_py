@@ -5,6 +5,9 @@
 {% get_solo 'landing.SiteConfiguration' as site_config %}
 {% get_solo 'landing.TextWhyWe' as text_why_we %}
 {% get_solo 'popup.ConfigContactForm' as config_form %}
+{% get_solo 'popup.PopUpThanksConsulting' as thanks_consulting %}
+{% get_solo 'popup.PopUpThanksRegister' as thanks_register %}
+{% get_solo 'popup.PopUpErrorRegister' as error_register %}
 
 
 <!DOCTYPE html>
@@ -32,16 +35,24 @@
 {% if result %}
 <script>
 $(document).ready(function(){
-		$('#thanks').css('display' , 'block');
+		$('#thanks').toggle('slow');
 		$('#close_btn_thanks').click(function(){
-		$('#thanks').css('display' , 'none');
-				
+		$('#thanks').hide(500);
 		})
+		
 	})
 </script>
+
+
 {% endif %}
 
-
+<script>
+$(document).ready(function(){
+	$('#close_btn_thanks_registration').click(function(){
+			$('#thanks_register').hide(500);
+		})
+})
+</script>
 
 <style>
 	.style-none button:nth-child(2)
@@ -56,12 +67,33 @@ $(document).ready(function(){
 </head>
 <body>
 
-<div class="" id="thanks" style = 'display: none;'>
-  <div class="" role="document">
+<div class="modal_thanks" id="thanks" style = 'display: none;'>
 
-        <button id = 'close_btn_thanks' type="button" class="close" data-dismiss="modal" aria-label="Close">X
+  <div class="" role="document">
+  <button id = 'close_btn_thanks' type="button" class="close" data-dismiss="modal" aria-label="Close">X
         </button>
-        <p>Спасибо!</p>
+		<p>
+			{{thanks_consulting.text}}
+		</p>
+        
+       
+  
+  </div>
+</div>
+
+<div id="error" style = 'display: none;'>
+	<p>{{error_register.text}}</p>
+	<button id = 'error_close'>X</button>
+</div>
+
+<div class="modal_thanks_registration" id="thanks_register" style = 'display: none;'>
+
+  <div class="" role="document">
+  <button id = 'close_btn_thanks_registration' type="button" class="close" data-dismiss="modal" aria-label="Close">X
+        </button>
+		<p>
+			{{thanks_register.text}}
+		</p>
   
   </div>
 </div>
@@ -130,14 +162,14 @@ $(document).ready(function(){
 				<a href = '{{course.upload.url}}' target = '_blank' class = 'schedule_pdf'>{{course.shedule_btn_text}}</a>
 	
 <!--				<button id = 'id' class = 'want_learn'>Хочу учиться</button>-->
-		<a type="button" class="want_learn {{course.number_of_seats|first_digit}}" data-toggle="modal" data-target="#learn_modal">
+		<a  id = 'id_{{course.id}}' type="button" class="want_learn {{course.number_of_seats|first_digit}}" data-toggle="modal" data-target="#learn_modal">
   {{course.learn_btn_text}}
 		</a>
 			</div>
-			<!-- <div class="btn_course">
-				<span>Lorem ipsum.</span>
-			</div> -->
-			<div class = 'btn_course {{course.number_of_seats|first_digit}}  {{course.number_of_seats|last_digit}}'>
+			<div  id = 'none-seats-{{course.id}}' class="btn_course_none {{course.number_of_seats|zero_count_seats}}" style = 'display: none;'>
+				<span>Мест нет</span>
+			</div>
+			<div class = 'btn_course {{course.number_of_seats|first_digit}}  {{course.number_of_seats|last_digit}}' id = "course_id_{{course.id}}" >
 				<button>{{course.number_of_seats|first_digit}}</button>
 				<button>{{course.number_of_seats|last_digit}}</button>
 				<p>мест осталось</p>

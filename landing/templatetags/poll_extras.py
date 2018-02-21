@@ -17,4 +17,9 @@ def last_digit(number):
 	else:
 		return str(number)[1]
 
-
+@register.filter(name='zero_count_seats')
+def zero_count_seats(number):
+	if number == 0:
+		return 'zero-number'
+	else:
+		return ''
