@@ -91,3 +91,68 @@ $(document).ready(function(){
             });
        });
 	});
+
+
+$(document).ready(function(){
+  $('*[data-show="show_event"]').click(function(){
+    var url = $(this).data('url');
+    var id  = $(this).data('id_event');
+    $.ajax({
+            type: "GET",
+            url: url,
+            dataType: "json",
+            data:{
+                'id':id,
+            },
+            success: function(data)
+            {
+              console.log(data.event.id);
+              var theme = data.event.theme;
+              var full_name  = data.event.lector.name + " " + data.event.lector.surname;
+              var where  = data.event.where;
+              var when  = data.event.when;
+              var description  = data.event.description;
+              when  = when.split('+')[0];
+              var position = data.event.lector.position;
+             $('#register_event').attr('data-event_id' , data.event.id);
+             $('.title_pop h1').text(theme);
+             $('.title_pop span#full-name').text(full_name);
+             $('.title_pop span#position').text(position);
+             $('span#where').text(where);
+             $('span#when').text(when);
+             $('span#lector').text(full_name);
+             $('p#description').text(description);
+            }
+  })
+})
+})
+
+
+$(document).ready(function(){
+  $('#register_event').submit(function(e){
+    e.preventDefault();
+    var url = $(this).attr('action');
+    var name = $('#id_name_client').val();
+    var phone = $('#id_phone_client').val();
+    var id_event  = $(this).attr('data-event_id');
+    console.log(url);
+    console.log(name);
+    console.log(phone);
+    console.log(id_event);
+    $.ajax({
+      type: "POST",
+      url: url,
+      dataType: "json",
+      data:{
+              'name':name,
+              'phone':phone,
+              'id_event':id_event,
+            },
+      success: function(data)
+      {
+        console.log(data);
+      }
+
+    })
+  })
+})

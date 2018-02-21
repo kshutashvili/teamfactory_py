@@ -41,8 +41,11 @@ INSTALLED_APPS = [
     'solo',
     'courses',
     'popup',
+    'event',
+    # 'json_field',
     # 'templatetags',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

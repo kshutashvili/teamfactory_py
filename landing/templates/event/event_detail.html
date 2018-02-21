@@ -1,0 +1,78 @@
+{% load solo_tags %}
+{% get_solo 'event.ConfigurationEventsPopUp' as conf_events %}
+
+
+
+<div class="modal fade" id="events_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog popup " role="document">
+   
+    <div class="modal-content events_popup">
+     
+    <div class="info-events">
+        
+
+         <div class="modal-header title_pop">
+       
+       
+        <h1></h1>
+        <span id = 'full-name'></span>
+        <span id = 'position'></span>
+      </div>
+      <div class = 'class'>
+      <div class=" events_modal_info">
+        <span>{{conf_events.text_where}}</span>
+        <span id = 'where'>Lorem ipsum dolor.</span>
+      </div>
+      <div class=" events_modal_info">
+        <span>{{conf_events.text_when}}</span>
+        <span id = 'when'>Lorem ipsum dolor.</span>
+      </div>
+       <div class=" events_modal_info">
+        <span>{{conf_events.text_lector}}</span>
+        <span id  ='lector'>Lorem ipsum dolor.</span>
+      </div>
+      <p id = 'description'>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet neque culpa odio aliquam et perferendis, reprehenderit officiis quo modi harum obcaecati sequi earum inventore tempore voluptatum enim! Mollitia amet labore adipisci, ab excepturi laudantium, autem perferendis blanditiis odit magnam ea, aperiam at temporibus consectetur. Incidunt eos, repellendus distinctio minus corporis!
+          </p>
+      </div>
+    </div>
+   
+      <div class="form-events">
+     
+        <div class="modal-body border">
+        <button type="button" class="close close_tablet" data-dismiss="modal" aria-label="Close">
+           
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h3>{{conf_events.name_form}}</h3>
+<form action="/register-event/" id='register_event' method="post">
+{% csrf_token %}
+       <div class="form">
+       {% for field in event_form%}
+        <div class="form-group">
+          <label for="">{{field.label}}</label>
+          <div>{{field}}</div>
+        </div>
+         {% endfor %}
+         
+          {% if form.errors %}
+        <span>{{form.errors}}</span>
+        {% endif %}
+      
+        <div class="form-group">
+          <p>{{conf_events.text_form}}</p>
+        </div>
+        <div class="form-group">
+          <button id='submit_event_form'>{{conf_events.btn}}</button>
+        </div>
+        
+       </div>
+        
+       </form>
+      </div>
+      </div>
+      
+     
+    </div>
+  </div>
+</div>

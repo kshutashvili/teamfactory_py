@@ -51,7 +51,9 @@ $(document).ready(function(){
 	$('#close_btn_thanks_registration').click(function(){
 			$('#thanks_register').hide(500);
 		})
-})
+});
+
+
 </script>
 
 <style>
@@ -179,14 +181,21 @@ $(document).ready(function(){
 	<section id = 'events' class = 'events content'>
 		
 		<h2>ИВЕНТЫ</h2>
+		{% for event in events_all %}
 		<div class="event">
-			<span>О брутализме в современном веб-дизайне </span> (<span class = 'event_author'>Влад Антонов</span> , <span>арт-директор</span>)
+			<span>{{event.theme}}</span> (<span class = 'event_author'>{{event.lector.name}} {{event.lector.surname}}</span> , <span>{{event.lector.position}}</span>)
 			
 
-			<button type="button" data-toggle="modal" data-target="#events_modal" > (Pop-up)Детали</button>
-			<span class="date">11.02.2018</span>
+			<a  class = 'click_event' data-toggle="modal"
+								  data-target="#events_modal"
+								  data-show = 'show_event'
+								  data-id_event = {{event.id}}
+								  data-url  ='detail-event/{{event.id}}'
+								   >Детали</a>
+			<span class="date">{{event.when|date:"SHORT_DATE_FORMAT"}}</span>
 		</div>
-		<div class="event">
+		{% endfor%}
+<!-- 		<div class="event">
 			<span>О брутализме в современном веб-дизайне </span> (<span class = 'event_author'>Влад Антонов</span> , <span>арт-директор</span>)
 			<button >Детали</button>
 			<span class="date">11.02.2018</span>
@@ -200,7 +209,7 @@ $(document).ready(function(){
 			<span>О брутализме в современном веб-дизайне </span> (<span class = 'event_author'>Влад Антонов</span> , <span>арт-директор</span>)
 			<button >Детали</button>
 			<span class="date">11.02.2018</span>
-		</div>
+		</div> -->
 		<div class="many_event content events">
 			<div class="event">
 				<span>О брутализме в современном веб-дизайне </span> (<span class = 'event_author'>Влад Антонов</span> , <span>арт-директор</span>)
@@ -301,86 +310,22 @@ $(document).ready(function(){
 
 {% include 'registration_course.html' %}
 
+{% include 'event/event_detail.html' %}
 
 
-<div class="modal fade" id="events_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog popup " role="document">
-   
-    <div class="modal-content events_popup">
-     
-    <div class="info-events">
-   	    
-    	   <div class="modal-header title_pop">
-       
-       
-        <h1>Lorem ipsum dolor sit amet, consectetur.
-        </h1>
-        <span>Lorem ipsum.</span>
-        <span>Lorem ipsum.</span>
-      </div>
-      <div class = 'class'>
-		  <div class=" events_modal_info">
-				<span>Lorem</span>
-				<span>Lorem ipsum dolor.</span>
-		  </div>
-		  <div class=" events_modal_info">
-				<span>Lorem</span>
-				<span>Lorem ipsum dolor.</span>
-		  </div>
-    	 <div class=" events_modal_info">
-				<span>Lorem</span>
-				<span>Lorem ipsum dolor.</span>
-		  </div>
-		  <p>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet neque culpa odio aliquam et perferendis, reprehenderit officiis quo modi harum obcaecati sequi earum inventore tempore voluptatum enim! Mollitia amet labore adipisci, ab excepturi laudantium, autem perferendis blanditiis odit magnam ea, aperiam at temporibus consectetur. Incidunt eos, repellendus distinctio minus corporis!
-      	  </p>
-      </div>
-    </div>
-   
-      <div class="form-events">
-     
-      	<div class="modal-body border">
-      	<button type="button" class="close close_tablet" data-dismiss="modal" aria-label="Close">
-           
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h3>Lorem ipsum.</h3>
-<form action="">
-       <div class="form">
-       
-       	<div class="form-group">
-       		<label for="">Lorem ipsum.</label>
-       		<input type="text" placeholder = 'Lorem ipsum.'>
-       	</div>
-       		<div class="form-group">
-       		<label for="">Lorem ipsum.</label>
-       		<input type="text" placeholder = 'Lorem ipsum.'>
-       	</div>
-       	
-     
-       	<div class="form-group">
-       		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eaque labore rem, delectus recusandae necessitatibus reprehenderit blanditiis architecto ab, quaerat?</p>
-       	</div>
-       	<div class="form-group">
-       		<button>Перезвоните мне</button>
-       	</div>
-       	
-       </div>
-       	
-       </form>
-      </div>
-      </div>
-      
-     
-    </div>
-  </div>
-</div>
+
+
 
 
 <script>
 $(document).ready(function(){
 	 $("#id_phone").mask("+380(99) 999-99-99");
+	 $("#id_phone_client").mask("+380(99) 999-99-99");
 });
+
+
+
+
 </script>	
 	
 	

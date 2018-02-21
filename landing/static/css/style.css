@@ -45,8 +45,8 @@ header
 	background-repeat: no-repeat;
 	-webkit-background-size:  100%;
 	background-size: cover ;
-	min-height: 600px;
-/*	height: 100vh;*/
+	/*min-height: 600px;*/
+	min-height: 100vh;
 	
 }
 
@@ -573,6 +573,7 @@ a.want_learn
 }
 .event
 {
+	position: relative;
 	width: 80%;
 	height: 55px;
 	font-size: 16px;
@@ -599,16 +600,16 @@ div.event span
 	
 }
 
-span.date  , .event button 
+span.date  , .event a
 {
+	display: block;
 	float:right;
 }
 
-.event button 
+.event a
 {
-	width: 125px;
-	height: 30px;
-	background: none;
+	
+	/*height: 10px;*/
 	border: 1px solid #feb921;
 	border-radius: 15px;
 	color: #feb921;
@@ -616,8 +617,9 @@ span.date  , .event button
 	font-family: "Roboto";
 	margin-top: 8px;
 	margin-right: 12px;
+	text-align: center;
 }
-.event button:hover 
+.event a:hover 
 {
 	background: -moz-linear-gradient(-122deg, rgb(60,60,178) 0%, rgb(85,68,130) 0%, #794482 100%);
 	background: -webkit-linear-gradient( -122deg, rgb(60,60,178) 0%, rgb(85,68,130) 0%, #794482 100%);
@@ -1025,6 +1027,11 @@ iframe
 	border-bottom: 1px solid white !important;
 }
 
+.form 
+{
+	margin-top: -50px;
+}
+
 .form-group label 
 {
 
@@ -1213,7 +1220,7 @@ color: rgb(212, 212, 212);
 .events_modal_info span 
 {
 	display: block;
-	font-size: 16px;
+	font-size: 13px;
 	font-family: "Roboto";
 	color: rgb(78, 78, 78);
 	font-weight: bold;
@@ -1478,7 +1485,7 @@ a:hover
 		top: 70px;
 		left:9px;
 	}
-	.event button
+	a
 	{
 		position: absolute;
 		top: 60px;
@@ -1548,6 +1555,7 @@ a:hover
 	{
 		background: url(../image/tablet_header.png) no-repeat;
 		background-size: 100%;
+		min-height: 600px;
 	}
 	.nav
 	{
@@ -1841,7 +1849,7 @@ a:hover
 
 @media screen and (max-width: 983px)
 {
-	.event button
+	a
 	{
 		width: 90px;
 	}
@@ -1958,7 +1966,7 @@ a:hover
 		top: 70px;
 		left:9px;
 	}
-	.event button
+	a
 	{
 	position: absolute;
 		top: 60px;

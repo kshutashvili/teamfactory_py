@@ -3,13 +3,12 @@ from django.urls import path , re_path
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import MainView , RegistrationCourse
+app_name  = 'event'
 
 
 urlpatterns = [
-    re_path('^$', MainView.as_view()),
-    re_path('^registration-course/$', RegistrationCourse.as_view() , name = 'registration-course'),
-    # re_path('^detail-event/$', RegistrationCourse.as_view() , name = 'registration-course'),
+    path('<int:pk>/', views.EventJSON.as_view() ,  name= 'detail-event'),
+    path('', views.test ,  name= 'register-event'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 

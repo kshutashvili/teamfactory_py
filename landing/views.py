@@ -8,23 +8,29 @@ from popup.forms import ContactForm , RegisterCourseForm
 from django.core.mail import send_mail , BadHeaderError
 from django.conf import settings
 from django.http import JsonResponse
+from event.models import Event
 import json
+
+from event.forms import EventForm
 
 
 class MainView(TemplateView):
 
 	def get_ctx(self):
 		form  = ContactForm()
+		event_form = EventForm()
 		form_course  = RegisterCourseForm()
 		why_we  = WhyWe.objects.all()
 		authors_all = Author.objects.all()
 		courses_all = Course.objects.all()
-
+		events_all  = Event.objects.all()
 		context  = {
-		'why_we': why_we,
-		'courses_all': courses_all,
-		'form': form,
-		'form_course': form_course,
+			'why_we': why_we,
+			'courses_all': courses_all,
+			'form': form,
+			'form_course': form_course,
+			'events_all': events_all,
+			'event_form': event_form,
 		}
 		return context
 
@@ -54,7 +60,7 @@ class MainView(TemplateView):
 			return render(request , 'main.html' , ctx)
 		else:
 			form = ContactForm()
-		return HttpResponse('asdasd')
+		return HttpResponse('Error!')
 
 
 class RegistrationCourse(TemplateView):
