@@ -160,8 +160,6 @@ $(document).ready(function(){
 					{{course.description}}
 				</p>
 				<a href = '{{course.upload.url}}' target = '_blank' class = 'schedule_pdf'>{{course.shedule_btn_text}}</a>
-	
-<!--				<button id = 'id' class = 'want_learn'>Хочу учиться</button>-->
 		<a  id = 'id_{{course.id}}' type="button" class="want_learn {{course.number_of_seats|first_digit}}" data-toggle="modal" data-target="#learn_modal">
   {{course.learn_btn_text}}
 		</a>

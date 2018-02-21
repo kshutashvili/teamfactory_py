@@ -64,7 +64,6 @@ class RegistrationCourse(TemplateView):
 
 	def post(self , request):
 		if request.is_ajax():
-			print('AJAX!!!!')
 			name = request.POST["name"]
 			phone = request.POST["phone"]
 			course_id = request.POST["course_id"]
@@ -73,7 +72,6 @@ class RegistrationCourse(TemplateView):
 											 course=Course.objects.get(id=course_id)
 											 )
 			try:
-
 				old_number_seats = Course.objects.get(id=course_id).number_of_seats
 				new_number_seats  = old_number_seats  - 1
 			except:

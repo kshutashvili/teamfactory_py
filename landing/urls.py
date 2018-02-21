@@ -9,7 +9,7 @@ from .views import MainView , RegistrationCourse
 urlpatterns = [
     re_path('^$', MainView.as_view()),
     re_path('^registration-course/$', RegistrationCourse.as_view() , name = 'registration-course'),
-]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
 
