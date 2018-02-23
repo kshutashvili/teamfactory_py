@@ -24,7 +24,7 @@ class Event(models.Model):
 	where  = models.CharField(max_length=100 , verbose_name='Где' ,default='г.Киев ул. Соломенская 3')
 	when   = models.DateTimeField(auto_now_add=False , auto_now= False ,verbose_name='Дата и время проведения')
 	description  = models.TextField(max_length=1000 , verbose_name='Текст ивента')
-
+	pub_date  = models.DateField(auto_now=True , verbose_name='Дата создания')
 	def __str__(self):
 		return 'Лектор - {0} , Тема - {1} , Когда - {2}'.format(self.lector.name , self.theme , self.when)
 

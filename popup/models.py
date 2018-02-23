@@ -32,6 +32,9 @@ class Contact(models.Model):
 	def __str__(self):
 		return "Номер заказа - {0} , имя клиента - {1} , курс - {2}".format(self.id  , self.name , self.course.id)
 
+	class Meta:
+		verbose_name = 'Запись на консультацию'
+		verbose_name_plural = 'Записи на консультации'
 
 class RegisterCourse(models.Model):
 	name = models.CharField(max_length=50 , verbose_name='Ваше имя')
@@ -65,3 +68,11 @@ class PopUpErrorRegister(SingletonModel):
 
 	class Meta:
 		verbose_name = 'Текст "Ошибка при регистрации"'	
+
+
+class PopUpThanksEventRegister(SingletonModel):
+	text  = models.TextField(max_length=600)
+
+	class Meta:
+		verbose_name = 'Tекст модального окна "спасибо за регистрацию на ивент"'
+

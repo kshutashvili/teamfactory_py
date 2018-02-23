@@ -52,3 +52,30 @@ class TextWhyWe(SingletonModel):
 
 	class Meta:
 		verbose_name = 'Дополнительный текст для блока почему мы'
+
+
+
+class BlockForStudents(SingletonModel):
+	text  = models.TextField(max_length=700 , verbose_name='Текст для студентов')
+	image = models.ImageField(upload_to='images', verbose_name='Картинка для студентов')
+
+	class Meta:
+		verbose_name= "Блок для студентов"
+
+
+class Partners(models.Model):
+	image = models.ImageField(upload_to='images', verbose_name='Лого партнеров')
+
+	class Meta:
+		verbose_name= "Лого партнера"
+		verbose_name_plural = 'Лого партнеров'
+
+
+class ConfigFooter(SingletonModel):
+	skype = models.CharField(max_length=30 , verbose_name='Наш скайп')
+	mail = models.CharField(max_length=30 , verbose_name='Наш mail')
+	first_phone = models.CharField(max_length=30 , verbose_name='Первый номер')
+	second_phone = models.CharField(max_length=30 , verbose_name='Второй номер')
+
+	class Meta:
+		verbose_name = 'Настройки футера'

@@ -1,11 +1,17 @@
 {% load solo_tags %}
 {% get_solo 'event.ConfigurationEventsPopUp' as conf_events %}
+{% get_solo 'popup.PopUpThanksEventRegister' as thanks_event_register %}
+<div id='thanks-register-event' style = 'display: none;'>
+  <p>{{thanks_event_register.text}}</p>
+  <button id = 'close_thanks_event'>X</button>
+</div>
 
-
-
-<div class="modal fade" id="events_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="events_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false" data-keyboard="false">
   <div class="modal-dialog popup " role="document">
-   
+   <button type="button" class="close close_tablet" id = 'close_event' data-dismiss="modal" aria-label="Close">
+           
+          <span aria-hidden="true">&times;</span>
+        </button>
     <div class="modal-content events_popup">
      
     <div class="info-events">
@@ -40,10 +46,7 @@
       <div class="form-events">
      
         <div class="modal-body border">
-        <button type="button" class="close close_tablet" data-dismiss="modal" aria-label="Close">
-           
-          <span aria-hidden="true">&times;</span>
-        </button>
+        
         <h3>{{conf_events.name_form}}</h3>
 <form action="/register-event/" id='register_event' method="post">
 {% csrf_token %}
@@ -54,7 +57,7 @@
           <div>{{field}}</div>
         </div>
          {% endfor %}
-         
+
           {% if form.errors %}
         <span>{{form.errors}}</span>
         {% endif %}

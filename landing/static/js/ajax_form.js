@@ -135,10 +135,15 @@ $(document).ready(function(){
     var name = $('#id_name_client').val();
     var phone = $('#id_phone_client').val();
     var id_event  = $(this).attr('data-event_id');
-    console.log(url);
-    console.log(name);
-    console.log(phone);
-    console.log(id_event);
+    
+  function reload(){
+        $('.modal-open').css('overflow' , 'auto');
+        $('body').css('overflow-x' , 'hidden');
+        $('body').css('padding-right' , '0');
+        $('#register_event input#id_name_client').val('');
+        $('#register_event input#id_phone_client').val('');
+ 
+    }
     $.ajax({
       type: "POST",
       url: url,
@@ -150,6 +155,11 @@ $(document).ready(function(){
             },
       success: function(data)
       {
+        console.log(data);
+        
+       $('#events_modal').hide(500);
+        $('#thanks-register-event').toggle(500);
+        reload();
         console.log(data);
       }
 

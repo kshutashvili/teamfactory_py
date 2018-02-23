@@ -8,6 +8,8 @@
 {% get_solo 'popup.PopUpThanksConsulting' as thanks_consulting %}
 {% get_solo 'popup.PopUpThanksRegister' as thanks_register %}
 {% get_solo 'popup.PopUpErrorRegister' as error_register %}
+{% get_solo 'landing.BlockForStudents' as for_students %}
+{% get_solo 'landing.ConfigFooter' as conf_footer  %}
 
 
 <!DOCTYPE html>
@@ -42,8 +44,6 @@ $(document).ready(function(){
 		
 	})
 </script>
-
-
 {% endif %}
 
 <script>
@@ -51,6 +51,9 @@ $(document).ready(function(){
 	$('#close_btn_thanks_registration').click(function(){
 			$('#thanks_register').hide(500);
 		})
+	$('#close_thanks_event').click(function(){
+		$('#thanks-register-event').hide(500);
+	})
 });
 
 
@@ -181,9 +184,11 @@ $(document).ready(function(){
 	<section id = 'events' class = 'events content'>
 		
 		<h2>ИВЕНТЫ</h2>
-		{% for event in events_all %}
+		{% for event in new_events %}
 		<div class="event">
-			<span>{{event.theme}}</span> (<span class = 'event_author'>{{event.lector.name}} {{event.lector.surname}}</span> , <span>{{event.lector.position}}</span>)
+			<span>{{event.theme}}</span>
+			<span class = 'event_author'>{{event.lector.name}} {{event.lector.surname}}</span> 
+			<span>{{event.lector.position}}</span>
 			
 
 			<a  class = 'click_event' data-toggle="modal"
@@ -195,48 +200,25 @@ $(document).ready(function(){
 			<span class="date">{{event.when|date:"SHORT_DATE_FORMAT"}}</span>
 		</div>
 		{% endfor%}
-<!-- 		<div class="event">
-			<span>О брутализме в современном веб-дизайне </span> (<span class = 'event_author'>Влад Антонов</span> , <span>арт-директор</span>)
-			<button >Детали</button>
-			<span class="date">11.02.2018</span>
-		</div>
-		<div class="event">
-			<span>О брутализме в современном веб-дизайне </span> (<span class = 'event_author'>Влад Антонов</span> , <span>арт-директор</span>)
-			<button >Детали</button>
-			<span class="date">11.02.2018</span>
-		</div>
-		<div class="event">
-			<span>О брутализме в современном веб-дизайне </span> (<span class = 'event_author'>Влад Антонов</span> , <span>арт-директор</span>)
-			<button >Детали</button>
-			<span class="date">11.02.2018</span>
-		</div> -->
+
 		<div class="many_event content events">
+		{% for last_event in last_events %}
 			<div class="event">
-				<span>О брутализме в современном веб-дизайне </span> (<span class = 'event_author'>Влад Антонов</span> , <span>арт-директор</span>)
-				<button >Детали</button>
-				<span class="date">11.02.2018</span>
-				
+				<span>{{last_event.theme}}</span>
+				<span class = 'event_author'>{{last_event.lector.name}} {{last_event.lector.surname}}</span>
+				<span>{{last_event.lector.position}}</span>
+				<a  class = 'click_event' data-toggle="modal"
+								  data-target="#events_modal"
+								  data-show = 'show_event'
+								  data-id_event = {{last_event.id}}
+								  data-url  ='detail-event/{{last_event.id}}'
+								   >Детали</a>
+			<span class="date">{{last_event.when|date:"SHORT_DATE_FORMAT"}}</span>
 			</div>
-			<div class="event">
-				<span>О брутализме в современном веб-дизайне </span> (<span class = 'event_author'>Влад Антонов</span> , <span>арт-директор</span>)
-				<button >Детали</button>
-				<span class="date">11.02.2018</span>
-				
-			</div>
-			<div class="event">
-				<span>О брутализме в современном веб-дизайне </span> (<span class = 'event_author'>Влад Антонов</span> , <span>арт-директор</span>)
-				<button >Детали</button>
-				<span class="date">11.02.2018</span>
-				
-			</div>
-			<div class="event">
-				<span>О брутализме в современном веб-дизайне </span> (<span class = 'event_author'>Влад Антонов</span> , <span>арт-директор</span>)
-				<button >Детали</button>
-				<span class="date">11.02.2018</span>
-				
+			{% endfor %}
 			</div>
 		</div>
-		<button id = 'others'>eще <img id = 'arrow' src="image/arrow-down.png" alt=""></button>
+		<button id = 'others'>eще <img id = 'arrow' src="{% static 'image/arrow-down.png'%}" alt=""></button>
 		
 	</section>
 	
@@ -247,33 +229,32 @@ $(document).ready(function(){
 			<div class="line_down"></div>
 			<h3>Студентам</h3>
 			
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum consequuntur repellendus in maxime iusto et aut ullam cum neque culpa, inventore officiis, odio nesciunt accusantium optio! Enim iste porro numquam aliquam a placeat cum molestias architecto facere autem voluptate quaerat aliquid incidunt, dolorem. Perferendis voluptas ratione corporis quia adipisci dolore!</p>
+			<p>{{for_students.text}}</p>
 			
 		</div>
-		<div class = 'img_for_students'>
-<!--			<img src="image/photo_for_students.png" alt="">-->
+		<div class = 'img_for_students' style = 'background:url({{MEDIA_URL}}{{for_students.image}}) no-repeat;'>
 		</div>
 	</section>
 	
 	<section class = 'partners'>
-		<a href=""><div>logotype</div></a>
-		<a href=""><div>logotype</div></a>
-		<a href=""><div>logotype</div></a>
+	{% for partner in partners %}
+		<a href=""><div style = 'background: url() ; background-size: contain; background-repeat: no-repeat;'><img src="{{MEDIA_URL}}{{partner.image}}" alt=""></div></a>
+		{% endfor %}
 	</section>
 	
 	<div class="partners" style = 'margin-top: 25px'>
 		
-		<span>Lorem</span>
+		<span>Партнеры</span>
 	</div>
 	
 	<footer>
 	<div id= 'contacts' class="content_footer">
 		<div class = 'contact'>
 			<span>Контакты</span>
-			<p id = 'geolocation'>Lorem ipsum dolor</p>
-			<p id = 'post'>Lorem ipsum dolor</p>
-			<p id = 'phone'>Lorem ipsum dolor</p>
-			<p id = 'phone'>Lorem ipsum dolor</p>
+			<p id = 'geolocation'>{{conf_footer.mail}}</p>
+			<p id = 'post'>{{conf_footer.skype}}</p>
+			<p id = 'phone'>{{conf_footer.first_phone}}</p>
+			<p id = 'phone'>{{conf_footer.second_phone}}</p>
 			<a class = 'circle google'></a>
 			<a class = 'circle vk'></a>
 			<a class = 'circle skype'></a>
@@ -281,13 +262,12 @@ $(document).ready(function(){
 		<div class = 'populary_course'>
 			<span>Популярные курсы</span>
 			<ul>
-				<li>Lorem ipsum.</li>
-				<li>Lorem ipsum.</li>
-				<li>Lorem ipsum.</li>
-				<li>Lorem ipsum.</li>
+			{% for course in courses_all %}
+				<li>{{course.name_en}}</li>
+				{% endfor %}
+				
 			</ul>
 		</div>
-		
 		<div class = 'map'><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2541.5692726703796!2d30.473564189920655!3d50.43049627796523!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cec08021053f%3A0xc4ea1fab18506bd0!2zM0EsINGD0LsuINCh0L7Qu9C-0LzQtdC90YHQutCw0Y8sIDPQkCwg0JrQuNC10LIsIDAyMDAw!5e0!3m2!1sru!2sua!4v1518176123746"  frameborder="0" style="border:0" allowfullscreen></iframe>.</div>
 	</div>
 	</footer>
