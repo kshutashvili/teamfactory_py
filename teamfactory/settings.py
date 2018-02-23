@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ')hpki)m1vhn&12^3=q*=57ho3s703l81$juc-rl04we7dw)=ez'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -86,8 +86,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'teamfactory',
-        'USER': 'admin',
-        'PASSWORD': 'admin',
+        'USER': 'teamfactory',
+        'PASSWORD': 'teamfactory',
         'HOST': 'localhost',
         'PORT': '',
     }
