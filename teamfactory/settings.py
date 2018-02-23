@@ -88,7 +88,7 @@ DATABASES = {
         'NAME': 'teamfactory',
         'USER': 'teamfactory',
         'PASSWORD': 'teamfactory',
-        'HOST': 'localhost',
+        'HOST': '',
         'PORT': '',
     }
 }

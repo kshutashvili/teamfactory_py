@@ -51,11 +51,6 @@ class MainView(TemplateView):
 			data = form.cleaned_data
 			name_course = Course.objects.get(id=data['course'].id).name_ru
 			all_phone  = Contact.objects.all()
-			for elem in all_phone:
-				if elem.contact_phone == data['contact_phone']:
-
-					ctx['error_phone'] = 'Вы уже регистрировались на заявку'
-				
 			mail = data['mail']
 			phone  = data['contact_phone']
 			msg  = "Имя : " + data['name'] + ' '
