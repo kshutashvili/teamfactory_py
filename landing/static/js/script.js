@@ -77,7 +77,7 @@ function back_photo()
 	if( $(window).width() <= 660)
 	{
 		$('header').css('background' , 'url(/static/image/tablet_header.png)');
-		$('header').css('background-size' , '100%');
+		$('header').css('background-size' , 'cover');
 		$('header').css('background-repeat' , 'no-repeat');
 		$('.author').each(function(index , value){
 			$(this).css('background' , 'url(/static/image/mob_aut_back.png)');

@@ -12,7 +12,7 @@ from django.http import JsonResponse
 from event.models import Event
 import datetime
 
-
+import json
 from event.forms import EventForm
 
 
@@ -69,7 +69,7 @@ class MainView(TemplateView):
 			return render(request , 'main.html' , ctx)
 		else:
 			form = ContactForm()
-		return HttpResponse('Error!')
+		return HttpResponseRedirect('/')
 
 
 class RegistrationCourse(TemplateView):
@@ -107,4 +107,4 @@ class RegistrationCourse(TemplateView):
 				send_mail("Запись на курс ", message, settings.EMAIL_HOST_USER ,  [settings.EMAIL_HOST_USER])
 
 				return HttpResponse(json.dumps(context))
-		return HttpResponse('asdas')
+		return HttpResponseRedirect('/')

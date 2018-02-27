@@ -5,6 +5,8 @@ from django.db import models
 from django.db import models
 from solo.models import SingletonModel
 
+from courses.models import Course
+
 
 class SiteConfiguration(SingletonModel):
     site_name = models.CharField(max_length=255, default='Site Name')
@@ -70,12 +72,22 @@ class Partners(models.Model):
 		verbose_name= "Лого партнера"
 		verbose_name_plural = 'Лого партнеров'
 
+class PopularСourses(SingletonModel):
+	first_course  = models.CharField(max_length=50 , verbose_name="Первый популярный" , blank=True , null=True)
+	two_course  = models.CharField(max_length=50 , verbose_name="Второй популярный" , blank=True , null=True)
+	three_course  = models.CharField(max_length=50 , verbose_name="Третий популярный" , blank=True , null=True)
+	four_course  = models.CharField(max_length=50 , verbose_name="Четвертый популярный" , blank=True , null=True)
+	
+	class Meta:
+		verbose_name = 'Популярные курсы'
+
 
 class ConfigFooter(SingletonModel):
 	skype = models.CharField(max_length=30 , verbose_name='Наш скайп')
 	mail = models.CharField(max_length=30 , verbose_name='Наш mail')
 	first_phone = models.CharField(max_length=30 , verbose_name='Первый номер')
 	second_phone = models.CharField(max_length=30 , verbose_name='Второй номер')
+	copyright  = models.CharField(max_length=60 , verbose_name='Копирайт'  , default='&copy; All rights reserved.')
 
 	class Meta:
 		verbose_name = 'Настройки футера'

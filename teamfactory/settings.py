@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'courses',
     'popup',
     'event',
+    'rosetta',
     # 'json_field',
     # 'templatetags',
 ]

@@ -19,6 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('landing.urls')),
@@ -26,7 +27,10 @@ urlpatterns = [
     path('register-event/', include('event.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-
+if 'rosetta' in settings.INSTALLED_APPS:
+    urlpatterns += [
+        path(r'^rosetta/', include('rosetta.urls'))
+    ]
 
 
 if settings.DEBUG:

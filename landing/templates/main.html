@@ -10,6 +10,7 @@
 {% get_solo 'popup.PopUpErrorRegister' as error_register %}
 {% get_solo 'landing.BlockForStudents' as for_students %}
 {% get_solo 'landing.ConfigFooter' as conf_footer  %}
+{% get_solo 'landing.PopularСourses' as popular_course  %}
 
 
 <!DOCTYPE html>
@@ -285,9 +286,11 @@ $(document).ready(function(){
 		<div class = 'populary_course'>
 			<span>Популярные курсы</span>
 			<ul>
-			{% for course in courses_all %}
-				<li>{{course.name_en}}</li>
-				{% endfor %}
+		
+				<li>{{popular_course.first_course}}</li>
+				<li>{{popular_course.two_course}}</li>
+				<li>{{popular_course.three_course}}</li>
+				<li>{{popular_course.four_course}}</li>
 				
 			</ul>
 		</div>
@@ -296,7 +299,7 @@ $(document).ready(function(){
 	</footer>
 	<div class="copy">
 		
-		<span>&copy; All rights reserved.</span>
+		<span>&copy; {{conf_footer.copyright}}</span>
 	</div>
 	
 	
