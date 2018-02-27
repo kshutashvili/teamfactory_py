@@ -57,14 +57,14 @@ class TextWhyWe(SingletonModel):
 
 class BlockForStudents(SingletonModel):
 	text  = models.TextField(max_length=700 , verbose_name='Текст для студентов')
-	image = models.ImageField(upload_to='images', verbose_name='Картинка для студентов')
+	image = models.ImageField(upload_to='image', verbose_name='Картинка для студентов')
 
 	class Meta:
 		verbose_name= "Блок для студентов"
 
 
 class Partners(models.Model):
-	image = models.ImageField(upload_to='images', verbose_name='Лого партнеров')
+	image = models.ImageField(upload_to='image', verbose_name='Лого партнеров')
 
 	class Meta:
 		verbose_name= "Лого партнера"
