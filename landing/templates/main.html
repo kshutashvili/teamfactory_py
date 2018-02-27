@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load static %}
 {% load solo_tags %}
 {% load poll_extras %}
 {% get_solo 'landing.Header' as header_config %}
@@ -138,7 +138,7 @@ $(document).ready(function(){
 
 	{% for elem in why_we %}
 		<div class="why">
-		<img src="{{MEDIA_URL}}{{elem.image}}" alt="">
+		<img src="{{elem.image.url}}" alt="">
 			<p>{{elem.text}}</p>
 		</div>
 		{% endfor%}
@@ -149,11 +149,11 @@ $(document).ready(function(){
 	<section id = 'courses' class = 'content'>
 	<h2>Курсы</h2>
 	{% for course in courses_all %}
-		<div class="author" style = 'background: url({{MEDIA_URL}}{{course.background}}) no-repeat;background-size: cover;'>
+		<div class="author" style = 'background: url({{course.background.url}}) no-repeat;background-size: cover;'>
 			<div class = 'photo' style  = 'background: url({% static "image/decor.png" %});'>
 				<span>{{course.name_en}}</span>
 				
-				<img src="{{MEDIA_URL}}{{course.author.image}}" alt="">
+				<img src="{{course.author.image.url}}" alt="">
 				<span class = 'name'>{{course.author.name}} {{course.author.surname}}</span>
 				<span class = 'position'>{{course.author.position}}</span>
 			</div>
@@ -232,13 +232,13 @@ $(document).ready(function(){
 			<p>{{for_students.text}}</p>
 			
 		</div>
-		<div class = 'img_for_students' style = 'background:url({{MEDIA_URL}}{{for_students.image}}) no-repeat;'>
+		<div class = 'img_for_students' style = 'background:url({{for_students.image.url}}) no-repeat;'>
 		</div>
 	</section>
 	
 	<section class = 'partners'>
 	{% for partner in partners %}
-		<a href=""><div style = 'background: url() ; background-size: contain; background-repeat: no-repeat;'><img src="{{MEDIA_URL}}{{partner.image}}" alt=""></div></a>
+		<a href=""><div style = 'background: url() ; background-size: contain; background-repeat: no-repeat;'><img src="{{partner.image.url}}" alt=""></div></a>
 		{% endfor %}
 	</section>
 	
@@ -302,10 +302,6 @@ $(document).ready(function(){
 	 $("#id_phone").mask("+380(99) 999-99-99");
 	 $("#id_phone_client").mask("+380(99) 999-99-99");
 });
-
-
-
-
 </script>	
 	
 	
