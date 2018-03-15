@@ -141,6 +141,8 @@ LANGUAGES = (
 
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru'
 
+TRANSLATABLE_MODEL_MODULES = ["landing.models", "event.models", "courses.models", "popup.models"]
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
