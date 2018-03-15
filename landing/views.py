@@ -1,8 +1,9 @@
+# coding: utf-8
 from django.shortcuts import render ,redirect
 from django.http import HttpResponse ,HttpResponseRedirect
 from .models import Test  , SiteConfiguration , Header , WhyWe , Partners 
 from courses.models import Author , Course 
-from popup.models import RegisterCourse
+from popup.models import RegisterCourse 
 from django.views.generic import TemplateView
 from popup.forms import ContactForm , RegisterCourseForm
 from popup.models import Contact
@@ -11,9 +12,10 @@ from django.conf import settings
 from django.http import JsonResponse
 from event.models import Event
 import datetime
-
 import json
 from event.forms import EventForm
+
+
 
 
 class MainView(TemplateView):
@@ -29,6 +31,11 @@ class MainView(TemplateView):
 		new_events = Event.objects.order_by('-id')[:4]
 		last_event = Event.objects.order_by('-id')[4:]
 		partners  = Partners.objects.all()
+		
+		if len(events_all) > 4:
+			hidden = True 
+		else: 
+			hidden = False
 		context  = {
 			'why_we': why_we,
 			'courses_all': courses_all,
@@ -38,10 +45,12 @@ class MainView(TemplateView):
 			'last_events': last_event,
 			'event_form': event_form,
 			'partners': partners,
+			'hidden_btn': hidden
 		}
 		return context
 
-	def get(self , request):
+	def get(self , request ):
+		
 		return render(request , 'main.html' , self.get_ctx())
 
 	def post(self , request):
@@ -79,6 +88,7 @@ class RegistrationCourse(TemplateView):
 
 	def post(self , request):
 		if request.is_ajax():
+			print('adasdasdasdasdasdss')
 			name = request.POST["name"]
 			phone = request.POST["phone"]
 			course_id = request.POST["course_id"]
@@ -108,3 +118,12 @@ class RegistrationCourse(TemplateView):
 
 				return HttpResponse(json.dumps(context))
 		return HttpResponseRedirect('/')
+
+
+# def check_email(request):
+# 	ctx = {}
+# 	mail = request.GET.get('mail')
+# 	mail_exist  = Contact.objects.filter(mail=mail).exists()
+# 	if mail_exist:
+# 		ctx['mail-exist'] = "На данный почтовый адрес уже была регистрация"
+# 	return HttpResponse('asda')

@@ -17,20 +17,26 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls.i18n import i18n_patterns
+from landing.views import MainView , RegistrationCourse 
+from event.views import test
 
-
-
-urlpatterns = [
+urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls),
-    path('', include('landing.urls')),
+    path('', MainView.as_view() , name = 'static_page'),
     path('detail-event/', include('event.urls')),
-    path('register-event/', include('event.urls')),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('register-event/', test , name = 'register-event'),
+    path('registration-course/', RegistrationCourse.as_view() , name = 'registration-course'),
+    # path('check-email/', check_email , name = 'registration-course'),
+    # path('<str:page_url>/', content.pages, name='static_pages'),
+) 
+ # path('', views.test ,  name= 'register-event'),
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-if 'rosetta' in settings.INSTALLED_APPS:
-    urlpatterns += [
-        path('rosetta/', include('rosetta.urls'))
-    ]
+# if 'rosetta' in settings.INSTALLED_APPS:
+#     urlpatterns += [
+#         path('rosetta/', include('rosetta.urls'))
+#     ]
 
 
 if settings.DEBUG:

@@ -1,3 +1,4 @@
+# coding: utf-8
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic.detail import DetailView
@@ -49,4 +50,6 @@ def test(request):
 			# context_json = serializers.serialize('json', context)
 			
 			return JsonResponse(context)
+		else:
+			return HttpResponse('adasda')
 

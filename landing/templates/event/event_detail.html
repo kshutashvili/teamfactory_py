@@ -48,8 +48,7 @@
         <div class="modal-body border">
         
         <h3>{{conf_events.name_form}}</h3>
-<form action="/register-event/" id='register_event' method="post">
-{% csrf_token %}
+<form action="register-event/" id='register_event' method="post">{% csrf_token %}
        <div class="form">
        {% for field in event_form%}
         <div class="form-group">

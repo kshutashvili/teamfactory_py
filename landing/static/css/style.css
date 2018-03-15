@@ -40,6 +40,35 @@
 
 
 /***********************************START HEADER**********************************/
+
+
+.s-header__lang
+{
+	position: absolute;
+	top: 50px;
+	right: 100px;
+
+}
+.s-header__lang a:first-child
+{
+	border-right:  2px solid #ffcc33;
+	
+}
+.s-header__lang a 
+{
+	font-family: "Roboto";
+	color: rgb(255, 255, 255);
+	line-height: 1.2;
+	font-size: 18px;
+	font-weight: bold;
+	padding-left: 6px;
+	padding-right: 12px;
+}
+
+.s-header__lang a:hover 
+{
+	color: #ffcc33;
+}
 header
 {
 	background-repeat: no-repeat;
@@ -63,6 +92,8 @@ header
 	justify-content: center;
 
 }
+
+
 
 
 .aligner
@@ -971,7 +1002,7 @@ iframe
 #go-top {
 	position: fixed; 
 	bottom: 22px;
-    right: 65px;
+    left: 30px;
 	cursor:pointer; 
 	display:none;
 	width: 50px;
@@ -1285,14 +1316,26 @@ a:hover
 
 
 
+@media screen and (max-width: 320px)
+{
 
+}
 
 
 
 
 @media  screen and (max-width: 660px)
 {
-	
+		.s-header__lang
+	{
+		position: absolute;
+		display: block;
+		top: 10px;
+		width: 106px;
+		margin-left: -53px;
+		left: 50%;
+	}
+
 	.events_modal_info
 	{
 		float:none;
@@ -1614,6 +1657,10 @@ a:hover
 
 @media screen and (max-width: 768px)
 {
+	h1 
+	{
+		/*margin-top: 130px !important;*/
+	}
 	.for_students
 	{
 		display: block;
@@ -2062,8 +2109,22 @@ a:hover
 	
 }
 
+@media screen and (max-width: 360px)
+{
+
+	.item:first-child {
+    margin-top: -37% !important;
+}
+}
+
 @media screen and (max-width: 320px)
 {
+
+	.item:first-child
+	{
+		margin-top: -50% !important;
+	}
+
 .item:first-child {
     margin-top: -265px;
 	}	

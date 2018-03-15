@@ -1,3 +1,6 @@
+{% load i18n %} 
+
+
 <div class="modal fade" id="want_learn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -36,7 +39,7 @@
        	</div>
        	{% endfor %}
     <div class = 'form-group' id="error_mail" style = 'display: none;'>
-      Пожалуйста введите валидный email: example@example.ex
+      {% trans "Пожалуйста введите валидный email: example@example.ex" %}
     </div>
        	<div class="form-group">
        		<p>{{config_form.text}}</p>
@@ -59,4 +62,4 @@
 $(document).ready(function(){
 	 $("#id_contact_phone").mask("+380(99) 999-99-99");
 });
-</script>
+</script>  

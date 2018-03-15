@@ -1,0 +1,150 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-03-15 14:04+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: event/models.py:50
+msgid "Имя"
+msgstr "Імʼя"
+
+#: event/models.py:51
+#, fuzzy
+#| msgid "Введите ваш телефон"
+msgid "Номер телефона"
+msgstr "Ваш номер телефону "
+
+#: landing/models.py:13
+msgid "TeamFactory"
+msgstr "TeamFactory"
+
+#: landing/models.py:14
+msgid "Иконка"
+msgstr "Іконка сайту"
+
+#: landing/templates/formcontact.html:42
+msgid "Пожалуйста введите валидный email: example@example.ex"
+msgstr "Введіть , будь ласка , валідний email: example@example.ex"
+
+#: landing/templates/main.html:136
+#, fuzzy
+#| msgid "Курсы"
+msgid "Рус"
+msgstr "Курси"
+
+#: landing/templates/main.html:137
+msgid "Укр"
+msgstr ""
+
+#: landing/templates/main.html:158
+msgid "О нас"
+msgstr "Про нас"
+
+#: landing/templates/main.html:159 landing/templates/main.html:183
+msgid "Курсы"
+msgstr "Курси"
+
+#: landing/templates/main.html:160
+msgid "Ивенты"
+msgstr "Події"
+
+#: landing/templates/main.html:161 landing/templates/main.html:264
+msgid "Студентам"
+msgstr "Студентам"
+
+#: landing/templates/main.html:162 landing/templates/main.html:287
+msgid "Контакты"
+msgstr "Контакти"
+
+#: landing/templates/main.html:167
+msgid "Почему мы?"
+msgstr "Чому ми?"
+
+#: landing/templates/main.html:194
+#, fuzzy
+#| msgid "Курсы"
+msgid "Курс"
+msgstr "Курси"
+
+#: landing/templates/main.html:195
+msgid "Преподaватель"
+msgstr "Викладач"
+
+#: landing/templates/main.html:196
+msgid "Длительность курса"
+msgstr "Тривалість курсу"
+
+#: landing/templates/main.html:206
+msgid "Мест нет"
+msgstr "Місць нема"
+
+#: landing/templates/main.html:211
+msgid "мест осталось"
+msgstr "Місць залишилось"
+
+#: landing/templates/main.html:219
+msgid "ИВЕНТЫ"
+msgstr "ПОДІЇ"
+
+#: landing/templates/main.html:232 landing/templates/main.html:248
+msgid "Детали"
+msgstr "Деталі"
+
+#: landing/templates/main.html:254
+msgid "еще"
+msgstr "ще"
+
+#: landing/templates/main.html:281
+msgid "Партнеры"
+msgstr "Партнери"
+
+#: landing/templates/main.html:297
+msgid "Популярные курсы"
+msgstr "Популярні курси"
+
+#: landing/templates/main.html:317
+msgid "Учиться"
+msgstr "Навчатись"
+
+#: popup/forms.py:11 popup/forms.py:22
+#, fuzzy
+#| msgid "Введите ваше имя"
+msgid "Ваше имя"
+msgstr "Введіть ваше імʼя"
+
+#: popup/models.py:30
+msgid "Введите ваше имя"
+msgstr "Введіть ваше імʼя"
+
+#: popup/models.py:31
+msgid "Введите вашу почту"
+msgstr "Введіть вашу пошту"
+
+#: popup/models.py:32
+msgid "Введите ваш телефон"
+msgstr "Ваш номер телефону "
+
+#: popup/models.py:33
+msgid "Курс который хотите посетить"
+msgstr "Курс який хочете відвідати"
+
+#: teamfactory/settings.py:137
+msgid "Russian"
+msgstr ""
+
+#: teamfactory/settings.py:138
+msgid "Ukrainian"
+msgstr ""

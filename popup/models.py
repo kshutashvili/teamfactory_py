@@ -1,7 +1,10 @@
+# coding: utf-8
 from django.db import models
 from solo.models import SingletonModel
 from courses.models import Course
 from django.core.validators import validate_email
+from django.utils.translation import ugettext_lazy as _
+
 # Create your models here.
 
 
@@ -24,10 +27,10 @@ class ConfigRegistrationForm(SingletonModel):
 
 
 class Contact(models.Model):
-	name  = models.CharField(max_length=200 , verbose_name="Введите ваше имя" ,  blank= True)
-	mail  = models.EmailField(max_length=254 , verbose_name="Введите вашу почту" , blank= True , validators=[validate_email])
-	contact_phone = models.CharField(max_length=35 , verbose_name="Введите ваш телефон" , blank= True)
-	course = models.ForeignKey(Course , on_delete=models.CASCADE , verbose_name='Курс который хотите посетить')
+	name  = models.CharField(max_length=200 , verbose_name=_("Введите ваше имя") ,  blank= True)
+	mail  = models.EmailField(max_length=254 , verbose_name=_("Введите вашу почту") , blank= True , validators=[validate_email])
+	contact_phone = models.CharField(max_length=35 , verbose_name=_("Введите ваш телефон") , blank= True)
+	course = models.ForeignKey(Course , on_delete=models.CASCADE , verbose_name=_('Курс который хотите посетить'))
 
 	def __str__(self):
 		return "Номер заказа - {0} , имя клиента - {1} , курс - {2}".format(self.id  , self.name , self.course.id)

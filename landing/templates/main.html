@@ -1,6 +1,8 @@
 {% load static %}
 {% load solo_tags %}
 {% load poll_extras %}
+{% load i18n %} 
+
 {% get_solo 'landing.Header' as header_config %}
 {% get_solo 'landing.SiteConfiguration' as site_config %}
 {% get_solo 'landing.TextWhyWe' as text_why_we %}
@@ -110,6 +112,7 @@ $(document).ready(function(){
   </div>
 </div>
 
+
 <div id="error" style = 'display: none;'>
 	<p>{{error_register.text}}</p>
 	<button id = 'error_close'>X</button>
@@ -123,11 +126,17 @@ $(document).ready(function(){
 		<p>
 			{{thanks_register.text}}
 		</p>
-  
+
   </div>
 </div>
 
 	<header class = 'flex-container' style = 'background: url({{header_config.image.url}}) no-repeat; background-size: cover;'>
+	{% get_current_language as LC %}
+			<div class="s-header__lang">
+				<a href="{% translate_url ru %}" class="b-btn b-btn--lang">{% trans "Рус" %}</a> 
+				<a href="{% translate_url ua %}" class="b-btn b-btn--lang">{% trans "Укр" %}</a>
+			</div>
+
 	<div class="aligner">
 		<div class="Aligner-item--fixed ">
 			<div class="item title">
@@ -146,16 +155,16 @@ $(document).ready(function(){
 	</div>
 	<nav class="item nav">
 			
-				<a href="#about-us">О нас</a>
-				<a href="#courses">Курсы</a>
-				<a href="#events">Ивенты</a>
-				<a href="#students">Студентам</a>
-				<a href="#contacts">Контакты</a>
+				<a href="#about-us">{% trans 'О нас' %}</a>
+				<a href="#courses">{% trans "Курсы" %}</a>
+				<a href="#events">{% trans 'Ивенты' %}</a>
+				<a href="#students">{% trans  'Студентам' %}</a>
+				<a href="#contacts">{% trans  'Контакты' %}</a>
 			</nav>
 	</header>
 	
 	<div id = 'about-us' class="flex-container-row">
-		<h2>Почему мы?</h2>
+		<h2>{% trans "Почему мы?" %}</h2>
 	</div>
 	
 	<section  class = 'flex-container-row section-row'>
@@ -171,7 +180,7 @@ $(document).ready(function(){
 	</section>
 	
 	<section id = 'courses' class = 'content'>
-	<h2>Курсы</h2>
+	<h2>{% trans "Курсы" %}</h2>
 	{% for course in courses_all %}
 		<div class="author" style = 'background: url({{course.background.url}}) no-repeat;background-size: cover;'>
 			<div class = 'photo' style  = 'background: url({% static "image/decor.png" %});'>
@@ -182,9 +191,9 @@ $(document).ready(function(){
 				<span class = 'position'>{{course.author.position}}</span>
 			</div>
 			<div class = 'about_course'>
-				<p>Курс: <span class = 'name_course'>{{course.name_ru}}</span></p>
-				<p>Преподaватель: <span>{{course.author.name}} {{course.author.surname}}</span></p>
-				<p>Длительность курса: <span>{{course.duration}}</span> ({{course.start_course|date:"SHORT_DATE_FORMAT"}} - {{course.end_course|date:"SHORT_DATE_FORMAT"}})</p>
+				<p>{% trans "Курс" %}: <span class = 'name_course'>{{course.name_ru}}</span></p>
+				<p>{% trans "Преподaватель" %}: <span>{{course.author.name}} {{course.author.surname}}</span></p>
+				<p>{% trans "Длительность курса" %}: <span>{{course.duration}}</span> ({{course.start_course|date:"SHORT_DATE_FORMAT"}} - {{course.end_course|date:"SHORT_DATE_FORMAT"}})</p>
 				<p class="text_course">
 					{{course.description}}
 				</p>
@@ -194,12 +203,12 @@ $(document).ready(function(){
 		</a>
 			</div>
 			<div  id = 'none-seats-{{course.id}}' class="btn_course_none {{course.number_of_seats|zero_count_seats}}" style = 'display: none;'>
-				<span>Мест нет</span>
+				<span>{% trans "Мест нет" %}</span>
 			</div>
 			<div class = 'btn_course {{course.number_of_seats|first_digit}}  {{course.number_of_seats|last_digit}}' id = "course_id_{{course.id}}" >
 				<button>{{course.number_of_seats|first_digit}}</button>
 				<button>{{course.number_of_seats|last_digit}}</button>
-				<p>мест осталось</p>
+				<p>{% trans "мест осталось" %}</p>
 			</div>
 		</div>
 		{% endfor %}
@@ -207,7 +216,7 @@ $(document).ready(function(){
 	
 	<section id = 'events' class = 'events content'>
 		
-		<h2>ИВЕНТЫ</h2>
+		<h2>{% trans "ИВЕНТЫ" %}</h2>
 		{% for event in new_events %}
 		<div class="event">
 			<span>{{event.theme}}</span>
@@ -220,7 +229,7 @@ $(document).ready(function(){
 								  data-show = 'show_event'
 								  data-id_event = {{event.id}}
 								  data-url  ='detail-event/{{event.id}}'
-								   >Детали</a>
+								   >{% trans "Детали" %}</a>
 			<span class="date">{{event.when|date:"SHORT_DATE_FORMAT"}}</span>
 		</div>
 		{% endfor%}
@@ -236,13 +245,14 @@ $(document).ready(function(){
 								  data-show = 'show_event'
 								  data-id_event = {{last_event.id}}
 								  data-url  ='detail-event/{{last_event.id}}'
-								   >Детали</a>
+								   >{% trans "Детали" %}</a>
 			<span class="date">{{last_event.when|date:"SHORT_DATE_FORMAT"}}</span>
 			</div>
 			{% endfor %}
 			</div>
 		</div>
-		<button id = 'others'>eще <img id = 'arrow' src="{% static 'image/arrow-down.png'%}" alt=""></button>
+		{% if hidden_btn %}<button id = 'others'>{% trans "еще" %} <img id = 'arrow' src="{% static 'image/arrow-down.png'%}" alt=""></button>
+		{% endif %}
 		
 	</section>
 	
@@ -251,7 +261,7 @@ $(document).ready(function(){
 		<div id = 'first_block_stud'>
 			<div class="line_up"></div>
 			<div class="line_down"></div>
-			<h3>Студентам</h3>
+			<h3>{% trans "Студентам" %}</h3>
 			
 			<p>{{for_students.text}}</p>
 			
@@ -268,13 +278,13 @@ $(document).ready(function(){
 	
 	<div class="partners" style = 'margin-top: 25px'>
 		
-		<span>Партнеры</span>
+		<span>{% trans "Партнеры" %}</span>
 	</div>
 	
 	<footer>
 	<div id= 'contacts' class="content_footer">
 		<div class = 'contact'>
-			<span>Контакты</span>
+			<span> {% trans "Контакты" %}</span>
 			<p id = 'geolocation'>{{conf_footer.mail}}</p>
 			<p id = 'post'>{{conf_footer.skype}}</p>
 			<p id = 'phone'>{{conf_footer.first_phone}}</p>
@@ -284,7 +294,7 @@ $(document).ready(function(){
 			<a class = 'circle skype'></a>
 		</div>
 		<div class = 'populary_course'>
-			<span>Популярные курсы</span>
+			<span> {% trans "Популярные курсы" %}</span>
 			<ul>
 		
 				<li>{{popular_course.first_course}}</li>
@@ -304,7 +314,7 @@ $(document).ready(function(){
 	
 	
 	<div id="want_learn_modal">
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam, earum.
+		{% trans "Учиться" %}
 	</div>
 	
 	

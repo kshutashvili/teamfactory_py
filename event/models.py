@@ -1,6 +1,8 @@
+# coding: utf-8
 from django.db import models
 from django.contrib.postgres.fields import JSONField
 from solo.models import SingletonModel
+from django.utils.translation import ugettext as _
 # Create your models here.
 
 
@@ -45,8 +47,8 @@ class ConfigurationEventsPopUp(SingletonModel):
 		verbose_name = "Настройка модального окна Ивента "
 
 class RegisterEvent(models.Model):
-	name_client  = models.CharField(max_length=50 , verbose_name='Имя')
-	phone_client  = models.CharField(max_length=50 , verbose_name='Номер телефона')
+	name_client  = models.CharField(max_length=50 , verbose_name=_('Имя'))
+	phone_client  = models.CharField(max_length=50 , verbose_name=_('Номер телефона'))
 	event  = models.ForeignKey(Event , on_delete=models.CASCADE , blank=True , null=True)
 
 	class Meta:

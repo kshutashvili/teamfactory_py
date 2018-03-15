@@ -1,3 +1,4 @@
+# coding: utf-8ы
 """
 Django settings for teamfactory project.
 
@@ -9,7 +10,7 @@ https://docs.djangoproject.com/en/2.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
-
+# This Python file uses the following encoding: utf-8
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -37,20 +38,24 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'landing',
     'solo',
     'courses',
     'popup',
     'event',
     'rosetta',
+    'modeltranslation',
     # 'json_field',
     # 'templatetags',
 ]
 
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -72,6 +77,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                'django.template.context_processors.i18n',
             ],
         },
     },
@@ -79,7 +85,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'teamfactory.wsgi.application'
 
-
+DEBUG_TOOLBAR_PATCH_SETTINGS = False 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
@@ -118,7 +124,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru-RU'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Kiev'
 
 USE_I18N = True
 
@@ -126,9 +132,24 @@ USE_L10N = True
 
 USE_TZ = True
 
+gettext = lambda s: s
+LANGUAGES = (
+    ('ru', gettext('Russian')),
+    ('ua', gettext('Ukrainian')),
+)
+
+
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
+
+
+LOCALE_PATHS = (
+
+        os.path.join(BASE_DIR , 'locale'),
+    )   
+
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')

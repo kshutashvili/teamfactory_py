@@ -1,3 +1,4 @@
+# coding: utf-8
 from django.db import models
 
 # Create your models here.
@@ -6,11 +7,11 @@ from django.db import models
 from solo.models import SingletonModel
 
 from courses.models import Course
-
+from django.utils.translation import ugettext as _
 
 class SiteConfiguration(SingletonModel):
-    site_name = models.CharField(max_length=255, default='Site Name')
-    icon  = models.ImageField(blank= True , null=True , verbose_name = 'Иконка' , upload_to='image')
+    site_name = models.CharField(max_length=255, default=_('TeamFactory') , verbose_name='Имя сайта')
+    icon  = models.ImageField(blank= True , null=True , verbose_name = _('Иконка' ), upload_to='image')
     
     def __str__(self):
         return "Название сайта(title)"
@@ -87,7 +88,7 @@ class ConfigFooter(SingletonModel):
 	mail = models.CharField(max_length=30 , verbose_name='Наш mail')
 	first_phone = models.CharField(max_length=30 , verbose_name='Первый номер')
 	second_phone = models.CharField(max_length=30 , verbose_name='Второй номер')
-	copyright  = models.CharField(max_length=60 , verbose_name='Копирайт'  , default='&copy; All rights reserved.')
+	copyright  = models.CharField(max_length=60 , verbose_name='Копирайт'  , default='All rights reserved.')
 
 	class Meta:
 		verbose_name = 'Настройки футера'

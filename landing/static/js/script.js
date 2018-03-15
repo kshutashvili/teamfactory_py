@@ -98,6 +98,8 @@ $(document).ready(function(){
 	
 
 	$('#id_mail').blur(function(){
+		// var	url  = $('form[name=contact_form]').attr('action');
+		// console.log(url);
 		var mail = $(this).val();
 		var filter = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$/;
 	    if(filter.test(mail)){
@@ -107,6 +109,46 @@ $(document).ready(function(){
 	    	$('#error_mail').css('display' , 'block');
 	        
 	    }
+	    // $.ajax({
+	    // 	type : "GET",
+	    // 	url : "check-email",
+	    // 	dataType : "json",
+	    // 	data : {
+	    // 		'mail': mail
+	    // 	},
+	    // 	success: function(data){
+	    // 		console.log("OK!");
+	    // 	}
+	    // })
 	})
 })
 
+	// $.ajax({
+ //            type: "POST",
+ //            url: url,
+ //            dataType: "json",
+ //            data:{
+ //                'name':name,
+ //                'phone':phone,
+ //                'course_id':course_id,
+ //            },
+ //            success: function(data){
+ //              number = String(data.new_number_seats);
+ //              if (number.length == 1)
+ //              {
+ //                $('#course_id_' + data.course_id + '.btn_course button:nth-child(2)').css('display' , 'none');
+ //                $('#course_id_' + data.course_id + '.btn_course button:first-child').text(number[0]);
+ //              }
+ //              else{
+ //                 $('#course_id_' + data.course_id + '.btn_course button:first-child').text(number[0]);
+ //                 $('#course_id_' + data.course_id + '.btn_course button:nth-child(2)').text(number[1]);
+ //              }
+ //              if(number == '0')
+ //              {
+ //                $('#course_id_' + data.course_id + '.btn_course').css('display' , 'none');
+ //                $('#none-seats-' + data.course_id).addClass('zero-number');
+ //                $('a#id_' + data.course_id).css('display' , 'none');
+ //              }
+ //              reload();
+ //             $('#thanks_register').toggle('slow');
+ //             },

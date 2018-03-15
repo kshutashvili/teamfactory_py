@@ -1,5 +1,8 @@
-from django import template
+# This Python file uses the following encoding: utf-8
 
+from django import template
+from django.urls import resolve, reverse
+from django.utils import translation
 register = template.Library()
 
 @register.filter(name='first_digit')
@@ -23,3 +26,28 @@ def zero_count_seats(number):
 		return 'zero-number'
 	else:
 		return ''
+
+
+
+
+
+
+class TranslatedURL(template.Node):
+    def __init__(self, language):
+        self.language = language
+
+    def render(self, context):
+        view = resolve(context['request'].path)
+        request_language = translation.get_language()
+        translation.activate(self.language)
+        print(view.args)
+        url = reverse(view.url_name, args=view.args, kwargs=view.kwargs)
+        translation.activate(request_language)
+        context['request'].session[translation.LANGUAGE_SESSION_KEY] = request_language
+        return url
+
+
+@register.tag(name='translate_url')
+def do_translate_url(parser, token):
+    language = token.split_contents()[1]
+    return TranslatedURL(language)
