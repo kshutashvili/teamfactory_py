@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,7 +46,7 @@ INSTALLED_APPS = [
     'popup',
     'event',
     'rosetta',
-    'modeltranslation',
+   
     # 'json_field',
     # 'templatetags',
 ]
