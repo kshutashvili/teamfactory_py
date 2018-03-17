@@ -94,8 +94,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'teamfactory',
-        'USER': 'teamfactory',
-        'PASSWORD': 'teamfactory',
+        'USER': 'admin',
+        'PASSWORD': 'antonmazun',
         'HOST': '',
         'PORT': '',
     }

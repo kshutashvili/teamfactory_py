@@ -22,10 +22,10 @@ class SiteConfiguration(SingletonModel):
 
 class Header(SingletonModel):
 	image  = models.ImageField(blank= True , null=True , verbose_name = 'Фоновый рисунок в хедере' , upload_to='image')
-	header_text  = models.TextField(max_length= 1000 , verbose_name = 'Текст в хедере')
+	header_text  = models.TextField(max_length= 3000 , verbose_name = 'Текст в хедере')
 	btn_learn = models.CharField(max_length=50, verbose_name = 'Кнопка учиться')
 	btn_presentation = models.CharField(max_length=50 ,verbose_name = 'Кнопка презентация' )
-	link_presentation = models.CharField(max_length=300 , blank=True , null=True ,verbose_name = 'Ccылка на презентацию')
+	link_presentation = models.CharField(max_length=1000 , blank=True , null=True ,verbose_name = 'Ccылка на презентацию')
 
 	def __str__(self):
 		return self.header_text
@@ -41,7 +41,7 @@ class Test(models.Model):
 
 class WhyWe(models.Model):
 	image  = models.ImageField(blank= True , null=True , verbose_name = 'Рисунок в пиктограмме' , upload_to='image')
-	text   = models.CharField(max_length = 50 , verbose_name = 'Текст пиктограммы')
+	text   = models.CharField(max_length = 300 , verbose_name = 'Текст пиктограммы')
 
 	def __str__(self):
 		return self.text
@@ -51,7 +51,7 @@ class WhyWe(models.Model):
 		verbose_name_plural  = 'Пиктограммы блока "почему мы"'
 
 class TextWhyWe(SingletonModel):
-	text = models.TextField(max_length = 500 , verbose_name = 'Дополнительный текст для блока "почему мы"')
+	text = models.TextField(max_length = 3000 , verbose_name = 'Дополнительный текст для блока "почему мы"')
 
 	class Meta:
 		verbose_name = 'Дополнительный текст для блока почему мы'
@@ -59,7 +59,7 @@ class TextWhyWe(SingletonModel):
 
 
 class BlockForStudents(SingletonModel):
-	text  = models.TextField(max_length=700 , verbose_name='Текст для студентов')
+	text  = models.TextField(max_length=3000 , verbose_name='Текст для студентов')
 	image = models.ImageField(upload_to='image', verbose_name='Картинка для студентов')
 
 	class Meta:

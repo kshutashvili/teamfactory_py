@@ -9,7 +9,7 @@ app_name  = 'event'
 
 urlpatterns = [
     path('<int:pk>/', views.EventJSON.as_view() ,  name= 'detail-event'),
-    path('', views.test ,  name= 'register-event'),
+    # path('', views.test ,  name= 'register-event'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
